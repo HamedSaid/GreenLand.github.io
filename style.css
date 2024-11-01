@@ -1,0 +1,19 @@
+.typesElement {
+    background-color: rgba(225,223,219,1);
+    border-radius: 10px;
+    text-align: center;
+    height: 450px;   
+}
+
+
+.typesElement:hover {
+    transition-duration: 500ms;
+    transform: translateY(-10px);
+}
+
+.typesElement a {
+    text-decoration: none;
+    color: black;
+
+}
+
