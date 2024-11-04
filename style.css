@@ -1,3 +1,4 @@
+/* this is mainly for main page */
 .typesElement {
     background-color: rgba(225,223,219,1);
     border-radius: 10px;
@@ -14,6 +15,92 @@
 .typesElement a {
     text-decoration: none;
     color: black;
+
+}
+
+
+
+/* this for about us page */
+
+.ss{
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+
+#aboutus_title{
+    max-width: 700px;
+    margin: auto;
+    text-align: center;
+    font-size: 55px;
+    font-family:'Courier New', Courier, monospace;
+    color: aliceblue;
+}
+
+#title {
+    /* unused */
+    background-color: rgba(42, 74, 70, 1);
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: large;
+    height: 300px;
+    border-radius: 20px;  
+  }
+
+.content{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif; 
+    background-color:rgb(152, 173, 173);
+
+}
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    margin: auto auto;
+    width: 90%;
+}
+
+
+#img_1{
+    float: left;
+    max-width: 320px;
+    border: 3px solid white;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+.text_box{
+    color: #fff;
+    font-size: 25px;
+    margin-left: 20px;
+}
+
+
+
+
+
+.Asking {
+    background-color:rgb(152, 173, 173);
+
+}
+
+
+.Asking h5 {
+    font-size: 35px;
+    padding-top: 120px;
+    text-align: center;
+    color: #fff;
+    font-family: "poppins", sans-serif; 
+}
+
+.foot{
+    background-color:rgb(31, 33, 33);
+    border: 10px;
+
 
 }
 
