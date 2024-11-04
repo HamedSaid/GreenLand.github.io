@@ -97,9 +97,15 @@
     font-family: "poppins", sans-serif; 
 }
 
+
+
 .foot{
-    background-color:rgb(31, 33, 33);
-    border: 10px;
+    background-color: rgb(42, 74, 70);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
 
 
 }
