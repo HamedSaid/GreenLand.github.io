@@ -38,18 +38,17 @@
     margin: auto;
     text-align: center;
     font-size: 55px;
-    font-family:'Courier New', Courier, monospace;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: aliceblue;
 }
 
 #title {
-    /* unused */
-    background-color: rgba(42, 74, 70, 1);
+
     color: white;
+    text-align: center;
+    padding: 20px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: large;
-    height: 300px;
-    border-radius: 20px;  
+    font-weight: bold;
   }
 
 .content{
