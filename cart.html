@@ -15,7 +15,7 @@
            background-color: white; 
         }
         .cart_element:hover {
-            background-color: rgba(158, 151, 151, 0.322);;
+            background-color: rgba(0, 128, 0, 0.2);
         }
     </style>
     
@@ -24,23 +24,36 @@
     <!-- this is the header-->
     <nav class="navbar navbar-expand-sm  navbar-dark backgroundings">
         <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="index.html"><img src="statics/logo.jpg" width="30px" class="rounded-circle"></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link"  data-toggle="tab" href="shop.html">Shop</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="cart.html">Cart</a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="contactUs.html">Contact Us</a>
-        </li>
-        <li class="nav-item"><a class="nav-link"data-toggle="tab" href="AboutUs.html">About Us</a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="index.html"><img src="statics/logo.jpg" width="30px" class="rounded-circle"></a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class= "dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                    Shop 
+                </a> 
+                <ul class="dropdown-menu m-3 mt-0">
+                    <li><a class="dropdown-item" href="shop.html">Main Shop</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="flowers.html">Flowers</a></li>
+                    <li><a class="dropdown-item" href="seeds.html">Seeds</a></li>
+                    <li><a class="dropdown-item" href="trees.html">Trees</a></li>
+    
+                </ul>  
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="cart.html">Cart</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="contactUs.html">Contact Us</a>
+            </li>
+            <li class="nav-item"><a class="nav-link"data-toggle="tab" href="AboutUs.html">About Us</a>
+            </li>
         </ul>
     </nav>
+
+   
 
 
     <div class="container-fluid text-center p-4" style="background-color: rgba(42,74,70,1);">
@@ -48,7 +61,7 @@
     </div>
 
 
-    <div class="container-fluid  p-2 " style="text-align: left;">
+    <div class="container-fluid  p-2 " style="text-align: center;">
         <h3 style="color: rgba(42,74,70,1);">Items</h3>
     </div>
 
@@ -58,10 +71,16 @@
             <h3 style="color: rgba(42,74,70,1);">Plam Tree</h3>
             <h6>price: 10 R.O</h6>  
         </div>
-        <div class="col">
-            <button >
-                add
-            </button>
+        <div class="col text-center mt-5">
+            <a class="m-3" style="opacity: 40%;" >
+                <img src="statics/subtration.jpg" alt="remove item" width="7%" style="border-radius: 20px;">
+            </a>
+            <span style="font-size: large;">
+                1
+            </span>
+            <a href="#" class="m-3">
+                <img src="statics/plus.jpg" alt="add item" width="7%" style="border-radius: 20px;">
+            </a>
         </div>
     </div>
 
@@ -85,7 +104,8 @@
         </div>
     </div>
 
-    <div class="container-fluid row mt-3 p-3" style=" background-color: rgba(42,74,70,1); color: rgba(196,210,202,1);">
+    
+    <div class="row mt-3 p-3" style=" background-color: rgba(42,74,70,1); color: rgba(196,210,202,1);">
         <h3 class="col-8">Total price: 14.5 R.O</h3>
         <a href="pay.html" class="col-4">
             <button type="button" class="btn btn-outline-light" style="width: 80%;">
