@@ -17,6 +17,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
     
     <style>
+      
+      /* this for main img in front */
+      #DivImg {
+        background-image: url('statics/inhomePageEdit.jpg'); 
+        height: 600px; 
+        background-size: cover; 
+        background-position: center;
+      }
+      
+      /* green card */
       #title {
         background-color: rgb(60, 107, 101, 0.8);
         color: white;
@@ -27,15 +37,18 @@
         border-radius: 20px; 
       }
 
+      /* I will do that by JS */
+      /* 
       #title:hover {
         background-color: rgb(42, 74, 70);
         transform-style: preserve-3d;
         transition-duration: 1000ms;
         transform: translateY(-10px);
 
-      }
+      } 
+        */
+
       /* font from google */
-    
       .comic-neue-bold {
         font-family: "Comic Neue", cursive;
         font-weight: 700;
@@ -44,6 +57,8 @@
   
 
     </style>
+
+   
 
 </head>
 <body>
@@ -80,8 +95,9 @@
   </nav>
   
 
-    <!-- this is for the uper page with the green card-->
-  <div class="container-fluid" style="background-image: url('statics/inhomePageEdit.jpg'); height: 600px; background-size: cover; background-position: center; ">
+    <!-- this is for the uper page with the green card (title)-->
+  <div class="container-fluid" id="DivImg">
+    
     <div class="container float-start text-center col-5" id="title">
       <h3 style="margin-top: 80px;">GreenLands</h3> 
       <h4 style="color: rgb(167, 163, 163); font-size: medium;">For Every Land We Have A Premium Tree </h4>
@@ -89,6 +105,7 @@
         <button type="button" class="btn btn-outline-light m-3">Start Shoping</button>
       </a>
     </div>
+
   </div>
 
   <!--for the quote-->
@@ -135,4 +152,54 @@
     [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
     </footer>
 </body>
+
+
+<script>
+
+  // get elements by ID
+  var titleElemnt = document.getElementById("title");
+  var imgsElemnt = document.getElementById("DivImg");
+  
+
+  // array of images url
+  var imgs = ["statics/inhomePageEdit.jpg","statics/plam.jpg"];
+  var index = 0;
+
+  // to change the style when the mouse move over the elemnt
+  function hoverJS() {
+    titleElemnt.style.backgroundColor = "rgb(42, 74, 70)";
+    titleElemnt.style.transformStyle = "preserve-3d";
+    titleElemnt.style.transitionDuration = "1000ms";
+    titleElemnt.style.transform = "translateY(-10px)";
+  }
+
+  titleElemnt.addEventListener("mouseover", hoverJS);
+
+  // if the mouse move out of elemnt 
+  titleElemnt.addEventListener("mouseout", function(){
+    titleElemnt.style.backgroundColor = "rgb(60, 107, 101, 0.8)";
+    titleElemnt.style.transformStyle = "preserve-3d";
+    titleElemnt.style.transitionDuration = "1000ms";
+    titleElemnt.style.transform = "translateY(+10px)";
+  });
+
+  // background-image: url('statics/inhomePageEdit.jpg'); 
+  //       height: 600px; 
+  //       background-size: cover; 
+  //       background-position: center;
+
+  
+  // change image in 3seconds
+  function changeImg() {
+      imgsElemnt.style.backgroundImage = imgs[1];
+  }
+
+  // setTimeout(() => {
+    
+  // }, timeout);
+  changeImg()
+  
+
+</script>
+
 </html>
