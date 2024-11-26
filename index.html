@@ -37,6 +37,10 @@
         border-radius: 20px; 
       }
 
+      img {
+        /* transition: opacity 0.5s ease-in;  */
+      }
+
       /* I will do that by JS */
       /* 
       #title:hover {
@@ -104,14 +108,17 @@
       <a href="shop.html">
         <button type="button" class="btn btn-outline-light m-3">Start Shoping</button>
       </a>
+      
     </div>
 
   </div>
 
   <!--for the quote-->
   <div class="container-fluid p-5" style=" background-color: rgba(225,223,219,1);">
-    <img class="container-fluid mx-auto d-block " src="statics/plam.jpg" style=" width: 60%; border: 10px; border-color: black;  border-radius: 20px; height: 100%px;">
-    <blockquote class="comic-neue-bold" style="font-size: medium; text-align: center;"> If agriculture goes wrong, nothing else will have a chance to go right (M. S. Swaminathan)</blockquote>
+    <img id="img" class="container-fluid mx-auto d-block " src="statics/plam.jpg" style=" width: 700px; height: 450px; border: 10px; border-color: black;  border-radius: 20px;">
+    <blockquote class="comic-neue-bold" style="font-size: medium; text-align: center;">
+      If agriculture goes wrong, nothing else will have a chance to go right (M. S. Swaminathan)
+    </blockquote>
   </div>
 
 
@@ -158,13 +165,14 @@
 
   // get elements by ID
   var titleElemnt = document.getElementById("title");
-  var imgsElemnt = document.getElementById("DivImg");
+  var imgsElemnt = document.getElementById("img");
   
 
   // array of images url
   var imgs = ["statics/inhomePageEdit.jpg","statics/plam.jpg"];
   var index = 0;
-
+  var opacity = 0;
+  
   // to change the style when the mouse move over the elemnt
   function hoverJS() {
     titleElemnt.style.backgroundColor = "rgb(42, 74, 70)";
@@ -183,23 +191,43 @@
     titleElemnt.style.transform = "translateY(+10px)";
   });
 
-  // background-image: url('statics/inhomePageEdit.jpg'); 
-  //       height: 600px; 
-  //       background-size: cover; 
-  //       background-position: center;
 
   
   // change image in 3seconds
   function changeImg() {
-      imgsElemnt.style.backgroundImage = imgs[1];
-  }
-
-  // setTimeout(() => {
     
-  // }, timeout);
-  changeImg()
-  
+    if (index  < imgs.length-1 ){
+      index++;
+    }
+    else {
+      index = 0;
+    }
 
+    // to make the changes smooth
+    imgsElemnt.style.opacity = 0;
+    opacity = 0;
+
+
+    imgsElemnt.src = imgs[index];
+
+    
+    setInterval(AddOpacity, 100); 
+      
+  }
+  setInterval(changeImg, 3000);
+
+
+  function AddOpacity() {
+
+    if (opacity == 1){
+      imgsElemnt.style.opacity = 0;
+      opacity = 0;
+    }
+    else {
+      opacity += 0.05
+    }
+    imgsElemnt.style.opacity =  `${opacity}`;
+  }
 </script>
 
 </html>
