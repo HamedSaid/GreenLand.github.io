@@ -1,7 +1,6 @@
 
 // // this file for funpage.html
 
-
 // this for make the play button move
 var playbutton = document.getElementById("play");
 var width_button = playbutton.style.width;
@@ -43,21 +42,30 @@ var scoreElement = document.getElementById("score");
 var timeElement = document.getElementById("time");
 var scoreElement2 = document.getElementById("score2");
 var timeElement2 = document.getElementById("time2");
+var qesiElement = document.getElementById("qesi");
 
-var imags = ["statics/inhomePageEdit.jpg","statics/plam.jpg"];
-var names = ["homePage", "plam"];
+var imgElement1 = document.getElementById("img1");
+var imgElement2 = document.getElementById("img2");
+var imgElement3 = document.getElementById("img3");
+
+var imags = ["statics/inhomePageEdit.jpg","statics/plam.jpg", "statics/orange.jpg"];
+var names = ["homePage", "plam","orange"];
 
 var score = 0;
 var time = 10.0;
 
+var answer_index = Math.floor(Math.random() * imags.length);
+var quesion = names[answer_index]; 
+
 function playGame() {
     scoreElement.innerHTML = "score= " + score;
     timeElement.innerHTML =  "time = " + time;
+    
+    qesiElement.innerHTML =  "find the image of '" + quesion + "'";
+    
 
-
-
-
-
+    // change images randomly
+    randomimages()
 
     function timegoOut() {
         if (time == 0) {
@@ -73,8 +81,27 @@ function playGame() {
 }
 
 
-function randomimage() {
+function randomimages() {
+    var ranIndex1 = Math.floor(Math.random() * imags.length);
+    var ranIndex2 = Math.floor(Math.random() * imags.length);
+    var ranIndex3 = Math.floor(Math.random() * imags.length);
+
+    while(ranIndex1 == ranIndex2) {
+        ranIndex2 = Math.floor(Math.random() * imags.length);
+    }
+
+    while(ranIndex3 == ranIndex2 || ranIndex3 == ranIndex1 ) {
+        ranIndex3 = Math.floor(Math.random() * imags.length);
+    }
+
+    // how could i passse the answer ?
     
+
+
+    imgElement1.src = imags[ranIndex1];
+    imgElement2.src = imags[ranIndex2];
+    imgElement3.src = imags[ranIndex3];
+    return
 }
 
 
