@@ -1,3 +1,5 @@
+// this file is mostly for index.html
+
 // get elements by ID
 var titleElemnt = document.getElementById("title");
 var imgsElemnt = document.getElementById("img");
