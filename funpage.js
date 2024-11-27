@@ -28,11 +28,12 @@ setInterval(moving, 1000)
 // move to play page
 var coverPage = document.getElementById("coverPage");
 var playPage = document.getElementById("playPage");
+var gameOverPage = document.getElementById("gameOverPage");
 
-
-function PlayPageChange() {
+function startPlay() {
     coverPage.style.display =  "none";
     playPage.style.display =  "block";
+    playGame()
 } 
 
 
@@ -40,10 +41,47 @@ function PlayPageChange() {
 // this only work when coverPage ==> not displayed
 var scoreElement = document.getElementById("score");
 var timeElement = document.getElementById("time");
+var scoreElement2 = document.getElementById("score2");
+var timeElement2 = document.getElementById("time2");
+
+var imags = ["statics/inhomePageEdit.jpg","statics/plam.jpg"];
+var names = ["homePage", "plam"];
 
 var score = 0;
-var time = 0;
+var time = 10.0;
 
-scoreElement.innerHTML = "score= " + score;
-timeElement.innerHTML = "time= " + time;
+function playGame() {
+    scoreElement.innerHTML = "score= " + score;
+    timeElement.innerHTML =  "time = " + time;
 
+
+
+
+
+
+    function timegoOut() {
+        if (time == 0) {
+            playPage.style.display = "none"
+            gameOver()
+        }
+        else {
+            time -= 1;
+            timeElement.innerHTML = "time = " + time; 
+        }
+    }
+    setInterval(timegoOut, 1000)
+}
+
+
+function randomimage() {
+    
+}
+
+
+
+function gameOver() {
+    scoreElement2.innerHTML = "score= " + score;
+    timeElement2.innerHTML =  "time = " + time;
+
+    gameOverPage.style.display = "block";
+}

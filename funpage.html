@@ -46,7 +46,7 @@
         
 
 
-        <button  class="btn btn-light m-2" id="play" style="width: 100px; height: 40px;" onclick="PlayPageChange()">
+        <button  class="btn btn-light m-2" id="play" style="width: 100px; height: 40px;" onclick="startPlay()">
             Play new 
         </button>
     </div> 
@@ -59,7 +59,23 @@
     <div class="background container-fluid" id="playPage" style="display: none;">
       <h4 id="score" style="text-align: left;"></h4>
       <h4 id="time" style="text-align: left;"></h4>
+
+      <div class="container">
+        <a href="#" id="ans1" value=""><img src="statics/plam.jpg" class="imgs" id="img1"></a>
+        <a href="#" id="ans2" value=""><img src="statics/plam.jpg" class="imgs" id="img2"></a>
+        <a href="#" id="ans3" value=""><img src="statics/plam.jpg" class="imgs" id="img3"></a>
+      </div>
+
     </div>
+
+
+    <!-- ----------------------------------------------------------------------------------------------------------- -->
+    <!-- this only for GameOver Page -->
+    <div class="background container-fluid" id="gameOverPage" style="display: none;">
+        <h4 id="score2" style="text-align: center;"></h4>
+        <h4 id="time2" style="text-align: center;"></h4>
+      </div>
+   
 
 </body>
 
