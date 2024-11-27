@@ -48,8 +48,17 @@ var imgElement1 = document.getElementById("img1");
 var imgElement2 = document.getElementById("img2");
 var imgElement3 = document.getElementById("img3");
 
-var imags = ["statics/inhomePageEdit.jpg","statics/plam.jpg", "statics/orange.jpg"];
-var names = ["homePage", "plam","orange"];
+var imags = [
+            "statics/grapes.jpg","statics/plam.jpg", "statics/orange.jpg",
+            "statics/straw.jpg", "statics/pog.jpg", "statics/mingt.jpg",
+            "statics/papaya.jpg", "statics/lemon.jpg", "statics/fig.jpg"
+            ];
+
+var names = [
+            "Grapes fruit", "plam tree","orange tree",
+            "cherry fruit", "pomegranate tree", "mint tree",
+            "Papaya fruit", "lemon tree", "fig tree"
+            ];
 
 var score = 0;
 var time = 10.0;
@@ -85,17 +94,28 @@ function randomimages() {
     var ranIndex1 = Math.floor(Math.random() * imags.length);
     var ranIndex2 = Math.floor(Math.random() * imags.length);
     var ranIndex3 = Math.floor(Math.random() * imags.length);
+    var ranIndex4 = Math.floor(Math.random() * imags.length);
+    var ranIndex5 = Math.floor(Math.random() * imags.length);
+    var ranIndex6 = Math.floor(Math.random() * imags.length);
+    var ranIndex7 = Math.floor(Math.random() * imags.length);
+    var ranIndex8 = Math.floor(Math.random() * imags.length);
+    var ranIndex9 = Math.floor(Math.random() * imags.length);
 
+    //for answer
+    var srcsList = [ranIndex1, ranIndex2, ranIndex3,ranIndex4,ranIndex5,ranIndex6,ranIndex7,ranIndex8,ranIndex9];
+    var randSrcIndex = Math.floor(Math.random() * srcsList.length);
+    
+    // check that the images will no repeat
     while(ranIndex1 == ranIndex2) {
         ranIndex2 = Math.floor(Math.random() * imags.length);
     }
 
-    while(ranIndex3 == ranIndex2 || ranIndex3 == ranIndex1 ) {
+    while(ranIndex3 == ranIndex2 || ranIndex3 == ranIndex1) {
         ranIndex3 = Math.floor(Math.random() * imags.length);
     }
 
-    // how could i passse the answer ?
-    
+    // to make sure that the answer will apper
+    imags[randSrcIndex] = srcsList[randSrcIndex]; 
 
 
     imgElement1.src = imags[ranIndex1];
