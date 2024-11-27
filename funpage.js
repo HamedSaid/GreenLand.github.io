@@ -25,7 +25,25 @@ setInterval(moving, 1000)
 
 
 
+// move to play page
+var coverPage = document.getElementById("coverPage");
+var playPage = document.getElementById("playPage");
 
 
+function PlayPageChange() {
+    coverPage.style.display =  "none";
+    playPage.style.display =  "block";
+} 
 
-// 
+
+// play page
+// this only work when coverPage ==> not displayed
+var scoreElement = document.getElementById("score");
+var timeElement = document.getElementById("time");
+
+var score = 0;
+var time = 0;
+
+scoreElement.innerHTML = "score= " + score;
+timeElement.innerHTML = "time= " + time;
+
