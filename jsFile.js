@@ -75,45 +75,42 @@ imgsElemnt.style.opacity =  `${opacity}`;
 objects so we can insert them in array after that to generate the table
 */
 
-function products(name, price, image){
+function Product(name, price, image) {
     this.name = name;
     this.price = price;
-    this,img = img;
+    this.image = image;
 }
 
 /* This function is to create a table with product data like name,price,image and add to cart button
 which is assuming button to add a product in cart but it only shows an alert that the item has been added successfully
 
 */
-function createTable(tableID, product){
+function createTable(tableID, productsArray) {
     const tableBody = document.getElementById(tableID);
     let rows = '';
-
-    for (const product in products){
+    for (const product of productsArray) {
         rows += `
-        <tr>
-            <td><img src="${product.image}" alt="${product.name}" class="productImg"></td>
-            <td>${product.name}</td>
-            <td>${product.price}</td>
-            <td><button class="btn btn-primary" onclick="alert('${product.name} added successfully.')">Add to Cart</button></td>
-
-        </tr>
-    `;
-}
-
-document.getElementById(tableID).innerHTML = rows;
+            <tr>
+                <td><img src="${product.image}" alt="${product.name}" class="productImg"></td>
+                <td>${product.name}</td>
+                <td>${product.price}</td>
+                <td><button class="btn btnBackground" onclick="alert('${product.name} added successfully.')">Add to Cart</button></td>
+            </tr>
+        `;
+    }
+    tableBody.innerHTML = rows;
 }
 
 /*This function Search for information from the arrays
 */ 
 
-function search(inputID, tableID, product){
+function search(inputID, tableID, products) {
     const searchKey = document.getElementById(inputID).value.toLowerCase();
     let filteredProducts = [];
-    for (const product in products){
-        if (product.name.toLowerCase().includes(searchKey)){
-            filteredProducts.push(product)
-        }//end of if
-    }//end of for
-    createTable(tableID,filteredProducts);
+    for (const product of products) {
+        if (product.name.toLowerCase().includes(searchKey)) {
+            filteredProducts.push(product);
+        }
+    }
+    createTable(tableID, filteredProducts);
 }//end of function search
