@@ -38,6 +38,7 @@
 
 
 </style>
+<script src="jsFile.js"></script>
 </head>
 <body>
       <!-- this is the header-->
@@ -82,57 +83,32 @@
 
   
 <h1 class="text-center backgroundings" id="title">Seeds</h1>
- 
-  <div class="container mt-5">
-    <table class="table tableHover table-bordered mt-4">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Image</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Price (OMR)</th>
 
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><img src="statics/apple.webp" alt="Granny Apple Tree" class="productImg" id="table td"></td>
-                <td>Granny Apple Tree</td>
-                <td>1.5</td>
+<!--Search-->
 
-            </tr>
-            <tr>
-                <td><img src="statics/pog.jpg" alt="Pomegranate Tree" class="productImg"></td>
-                <td>Pomegranate Tree</td>
-                <td>2</td>
-
-            </tr>
-            <tr>
-                <td><img src="statics/straw.jpg" alt="Bing Cherry Tree" class="productImg"></td>
-                <td>Bing Cherry Tree</td>
-                <td>3</td>
-
-            </tr>
-            <tr>
-                <td><img src="statics/strawbery.jpg" alt="Strawberry" class="productImg"></td>
-                <td>Strawberry</td>
-                <td>1.4</td>
-
-            </tr>
-            <tr>
-                <td><img src="statics/grapes.jpg" alt="Grape Fruit" class="productImg"></td>
-                <td>Grape Fruit</td>
-                <td>0.8</td>
-
-            </tr>
-            <tr>
-                <td><img src="statics/papaya.webp" alt="Papaya Fruit" class="productImg"></td>
-                <td>Papaya Fruit</td>
-                <td>0.5</td>
-
-            </tr>
-        </tbody>
-    </table>
+<div class="containter mt-4 search">
+  <h3 style="color: rgba(11, 100, 90, 1);">Search for specific seed:</h3>
+  <input type="text" id="searchSeedInput" placeholder="Enter seed name" class="form-control searchInput">
+  <button class="btn btnBackground mt-2" onclick="search('searchSeedInput', 'seedTableBody', seeds)">Search</button>
 </div>
+
+ 
+  <!--Creating the table-->
+<div class="container mt-5">
+  <table class="table tableHover table-bordered mt-4" id="seedTable">
+    <thead class="thead-dark">
+      <tr>
+          <th scope="col">Image</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Price (OMR)</th>
+          <th scope="col"></th>
+      </tr>
+  </thead>
+  <tbody id="seedTableBody">
+  </tbody>
+</table>
+</div>
+
 
 
 
@@ -140,5 +116,20 @@
 <footer class="backgroundings foot">
 [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
 </footer>
+
+<!--Creating an array of seeds and by using it we create the table-->
+<script>
+  const seeds = [
+      new Product("Granny Apple Tree", 1.5, "statics/apple.webp"),
+      new Product("Pomegranate Tree", 2, "statics/pog.jpg"),
+      new Product("Bing Cherry Tree", 3, "statics/straw.jpg"),
+      new Product("Strawberry", 1.4, "statics/strawbery.jpg"),
+      new Product("Grape Fruit", 0.8, "statics/grapes.jpg"),
+      new Product("Papaya Fruit", 0.5, "statics/papaya.webp")
+  ];
+  window.onload = function() {
+      createTable('seedTableBody', seeds);  
+  };
+</script>
 </body>
 </html>
