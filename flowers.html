@@ -38,6 +38,7 @@
 
 
 </style>
+<script src="jsFile.js"></script>
 </head>
 <body>
   <!-- this is the header-->
@@ -83,56 +84,30 @@
 
 
 <h1 class="text-center backgroundings" id="title">Flowers</h1>
+
+<!--Search-->
+
+<div class="containter mt-4 search">
+  <h3 style="color: rgba(11, 100, 90, 1);">Search for specific flower:</h3>
+  <input type="text" id="searchFlowerInput" placeholder="Enter flower name" class="form-control searchInput">
+  <button class="btn btnBackground mt-2" onclick="search('searchFlowerInput', 'flowerTableBody', flowers)">Search</button>
+</div>
+
  
-  <div class="container mt-5">
-    <table class="table tableHover table-bordered mt-4">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Image</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Price (OMR)</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><img src="statics/flower1.jpg" alt="Royal Star Magnolia Tree" class="productImg" id="table td"></td>
-                <td>Royal Star Magnolia Tree</td>
-                <td>1.5</td>
-
-            </tr>
-            <tr>
-                <td><img src="statics/flower.jpg" alt="Carolina Jasmine" class="productImg"></td>
-                <td>Carolina Jasmine</td>
-                <td>0.5</td>
-
-            </tr>
-            <tr>
-                <td><img src="statics/flower6.jpg" alt="Hybrid Tea Roses" class="productImg"></td>
-                <td>Hybrid Tea Roses</td>
-                <td>4</td>
-
-            </tr>
-            <tr>
-                <td><img src="statics/flower2.jpg" alt="Narcissus" class="productImg"></td>
-                <td>Narcissus</td>
-                <td>3.6</td>
-
-            </tr>
-            <tr>
-                <td><img src="statics/LilacFlower.jpg" alt="Lilac" class="productImg"></td>
-                <td>Lilac</td>
-                <td>2.5</td>
-
-            </tr>
-            <tr>
-                <td><img src="statics/flower4.jpg" alt="Peony" class="productImg"></td>
-                <td>Peony</td>
-                <td>9</td>
-
-            </tr>
-        </tbody>
-    </table>
+<!--Creating the table-->
+<div class="container mt-5">
+  <table class="table tableHover table-bordered mt-4" id="flowerTable">
+    <thead class="thead-dark">
+      <tr>
+          <th scope="col">Image</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Price (OMR)</th>
+          <th scope="col"></th>
+      </tr>
+  </thead>
+  <tbody id="flowerTableBody">
+  </tbody>
+</table>
 </div>
 
 
@@ -141,6 +116,19 @@
 <footer class="backgroundings foot">
 [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
 </footer>
-
+<!--Creating an array of flowers and by using it we create the table-->
+<script>
+  const flowers = [
+      new Product("Royal Star Magnolia Tree", 1.5, "statics/flower1.jpg"),
+      new Product("Carolina Jasmine", 0.5, "statics/flower.jpg"),
+      new Product("Hybrid Tea Roses", 4, "statics/flower6.jpg"),
+      new Product("Narcissus", 3.6, "statics/flower2.jpg"),
+      new Product("Lilac", 2.5, "statics/LilacFlower.jpg"),
+      new Product("Peony", 9, "statics/flower4.jpg")
+  ];
+  window.onload = function() {
+      createTable('flowerTableBody', flowers);  
+  };
+</script>
 </body>
 </html>

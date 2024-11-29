@@ -102,7 +102,7 @@
             <th scope="col">Image</th>
             <th scope="col">Product Name</th>
             <th scope="col">Price (OMR)</th>
-            <th scope="col">Action</th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody id="treeTableBody">
@@ -116,9 +116,9 @@
 <footer class="backgroundings foot">
 [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
 </footer>
-
+<!--Creating an array of trees and by using it we create the table-->
 <script>
-  // Array for tree products, defined in trees.html
+  
   const trees = [
       new Product("Lemon Tree", 3.5, "statics/lemon.jpg"),
       new Product("Celeste Fig Tree", 0.5, "statics/fig.jpg"),
@@ -127,10 +127,8 @@
       new Product("Orange Tree", 4, "statics/orange.jpg"),
       new Product("Elberta Peach Tree", 6.5, "statics/fruit.jpg")
   ];
-
-  // Call to create the table when the page loads
   window.onload = function() {
-      createTable('treeTableBody', trees);  // Pass 'treeTableBody' and 'trees' to createTable()
+      createTable('treeTableBody', trees);
   };
 </script>
 </body>

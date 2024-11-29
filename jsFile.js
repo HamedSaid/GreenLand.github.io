@@ -73,6 +73,7 @@ imgsElemnt.style.opacity =  `${opacity}`;
 
 /* This is a constructor function to create trees,seeds and flowers
 objects so we can insert them in array after that to generate the table
+We used 3 arrays which can be found in trees.html,flowers.html and seeds.html 
 */
 
 function Product(name, price, image) {
@@ -101,7 +102,7 @@ function createTable(tableID, productsArray) {
     tableBody.innerHTML = rows;
 }
 
-/*This function Search for information from the arrays
+/*This function Search for information from the arrays by entering each element in the array and compare it to the search key
 */ 
 
 function search(inputID, tableID, products) {
@@ -113,4 +114,4 @@ function search(inputID, tableID, products) {
         }
     }
     createTable(tableID, filteredProducts);
-}//end of function search
+}
