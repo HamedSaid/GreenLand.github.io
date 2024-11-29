@@ -103,3 +103,17 @@ function createTable(tableID, product){
 
 document.getElementById(tableID).innerHTML = rows;
 }
+
+/*This function Search for information from the arrays
+*/ 
+
+function search(inputID, tableID, product){
+    const searchKey = document.getElementById(inputID).value.toLowerCase();
+    let filteredProducts = [];
+    for (const product in products){
+        if (product.name.toLowerCase().includes(searchKey)){
+            filteredProducts.push(product)
+        }//end of if
+    }//end of for
+    createTable(tableID,filteredProducts);
+}//end of function search
