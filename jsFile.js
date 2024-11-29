@@ -70,3 +70,36 @@ imgsElemnt.style.opacity =  `${opacity}`;
 // add the day and time
 // var today = new Date();
 // dayElement.innerHTML = today;
+
+/* This is a constructor function to create trees,seeds and flowers
+objects so we can insert them in array after that to generate the table
+*/
+
+function products(name, price, image){
+    this.name = name;
+    this.price = price;
+    this,img = img;
+}
+
+/* This function is to create a table with product data like name,price,image and add to cart button
+which is assuming button to add a product in cart but it only shows an alert that the item has been added successfully
+
+*/
+function createTable(tableID, product){
+    const tableBody = document.getElementById(tableID);
+    let rows = '';
+
+    for (const product in products){
+        rows += `
+        <tr>
+            <td><img src="${product.image}" alt="${product.name}" class="productImg"></td>
+            <td>${product.name}</td>
+            <td>${product.price}</td>
+            <td><button class="btn btn-primary" onclick="alert('${product.name} added successfully.')">Add to Cart</button></td>
+
+        </tr>
+    `;
+}
+
+document.getElementById(tableID).innerHTML = rows;
+}
