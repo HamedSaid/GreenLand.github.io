@@ -1,0 +1,98 @@
+body {
+    background-image: linear-gradient(to  right, rgb(178, 225, 178) , rgb(64, 123, 64)) ;
+    font-family: 'Poppins', sans-serif;
+}
+
+#title_1{
+    color: aliceblue;
+    text-align: center;
+    font-family:'Courier New', Courier, monospace;
+}
+
+#form {   
+    width: 700px;
+    margin: 10vh auto 0 auto;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+#form h1 {
+    color: #0f2027;
+    text-align: center;
+}
+
+#form button {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    color: white;
+    background-color: rgb(111, 165, 133);
+    border: none;
+    border-radius: 4px;
+    font-size: 17px;
+}
+
+#form button:hover {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    color: white;
+    background-color: rgb(122, 128, 125);
+    border: none;
+    border-radius: 4px;
+    font-size: 17px;
+}
+
+.input_user {
+    display: flex;
+    flex-direction: column;
+}
+
+.input_user input {
+    border: 2px solid #f0f0f0;
+    border-radius: 5px;
+    /* check it */
+    display: block;
+    font-size: 20px;
+    padding: 3px;
+    margin:5px;
+}
+
+.input_user .readio_choices{  
+    display: inline;
+    margin: 15px;
+}
+
+.input_user .check_box{  
+    display: inline;
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-bottom: 5vb;
+    
+}   
+
+.input_user span{  
+    margin: 10px;
+}
+
+
+
+.input_user input:focus {
+    outline: 0;
+}
+
+.input_user.success input {
+    border-color: #09c372;
+}
+
+.input_user.error input {
+    border-color: #ff3860;
+}
+
+.input_user .error {
+    color: #ff3860;
+    font-size: 9px;
+    height: 13px;
+}
