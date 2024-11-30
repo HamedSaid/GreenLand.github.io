@@ -9,7 +9,56 @@
 
     <!-- for the style sheet-->
     <link rel="stylesheet" href="style.css">
-    
+    <script src="cart_buttons.js"></script>
+    <style>
+      
+      .calculator-container {
+          background: #ffffff;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+          width: 400px;
+          text-align: center;
+      }
+      .calculator-container h1 {
+          font-size: 1.5em;
+          margin-bottom: 20px;
+      }
+      .form-group {
+          margin-bottom: 15px;
+      }
+      .form-group label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: bold;
+      }
+      .form-group input {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+      }
+      .btn {
+          padding: 10px 20px;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+      }
+      .btn:hover {
+          background: #0056b3;
+      }
+      .result {
+          margin-top: 20px;
+          font-size: 1.2em;
+          color: #333;
+      }
+
+      .middle_form{
+        margin-top: 100px ;
+        justify-items: center;
+      }
+  </style>
 </head>
   <body>
     <!-- this is the header-->
@@ -53,6 +102,30 @@
   </nav>
         
 
+
+
+  <!-- bill prices -->
+   <div class="middle_form">
+        <div class="calculator-container">
+          <h1>Bill Calculator</h1>
+          <div class="form-group">
+              <label for="item-price">Totla Price (RO) before:</label>
+              <span id="total_all_prices_1">0</span> R.O
+          </div>
+          <div class="form-group">
+              <label for="age">Customer Age:</label>
+              <input type="number" id="age" placeholder="Enter customer age">
+          </div>
+
+          <button class="btn btn-success" onclick="calculateBill()">Calculate Bill</button>
+          <div class="result" id="result"></div>
+          <div class="form-group">
+            <label for="item-price">Totla Price (RO) after:</label>
+            <input type="number" id="item-price" placeholder="Enter item price">
+        </div>
+      </div>
+  
+   </div>
 
 
     <form class="row g-3 m-5" action="done.html" method="get">
