@@ -15,6 +15,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
     
+    <script src="jsFile.js"></script>
+
 <style>
 
     /* Style for table images */ 
@@ -37,82 +39,75 @@
 
 
 
+
 </style>
 </head>
 <body>
       <!-- this is the header-->
-  <div class="container-fluid "></div>
-  <nav class="navbar navbar-expand-sm  navbar-dark backgroundings" >
+  <nav class="navbar navbar-expand-sm  navbar-dark backgroundings">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="index.html"><img src="statics/logo.jpg" width="30px" class="rounded-circle"></a>
+          <a class="nav-link active" data-toggle="tab" href="index.html"><img src="statics/logo.jpg" width="30px" class="rounded-circle"></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  data-toggle="tab" href="shop.html">Shop</a>
+        <a href="#" class= "dropdown-toggle nav-link" data-bs-toggle="dropdown">
+          Shop 
+        </a> 
+        <ul class="dropdown-menu m-3 mt-0">
+          <li><a class="dropdown-item" href="shop.html">Main Shop</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="flowers.html">Flowers</a></li>
+          <li><a class="dropdown-item" href="seeds.html">Seeds</a></li>
+          <li><a class="dropdown-item" href="trees.html">Trees</a></li>
+        </ul>  
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="cart.html">Cart</a>
+      </li>
+        
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="contactUs.html">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"data-toggle="tab" href="AboutUs.html">About Us</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="cart.html">Cart</a>
       </li>
-      
+
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="contactUs.html">Contact Us</a>
+        <a class="nav-link" data-toggle="tab" href="Questionnaire_page.html">Questionnaire</a>
       </li>
-      <li class="nav-item"><a class="nav-link"data-toggle="tab" href="AboutUs.html">About Us</a>
-      </li>
+
     </ul>
   </nav>
-</div>
+  
 <h1 class="text-center backgroundings" id="title">Trees</h1>
  
+<!--Search-->
+
+  <div class="containter mt-4 search">
+    <h3 style="color: rgba(11, 100, 90, 1);">Search for specific tree:</h3>
+    <input type="text" id="searchTreeInput" placeholder="Enter tree name" class="form-control searchInput">
+    <button class="btn btnBackground mt-2" onclick="search('searchTreeInput', 'treeTableBody', trees)">Search</button>
+  </div>
+
+
+  <!--Creating the table-->
   <div class="container mt-5">
-    <table class="table tableHover table-bordered mt-4">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Image</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Price (OMR)</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><img src="statics/lemon.jpg" alt="Lemon Tree" class="productImg" id="table td"></td>
-                <td>Lemon Tree</td>
-                <td>3.5</td>
-
-            </tr>
-            <tr>
-                <td><img src="statics/fig.jpg" alt="Celeste Fig Tree" class="productImg"></td>
-                <td>Celeste Fig Tree</td>
-                <td>0.5</td>
-
-            </tr>
-            <tr>
-                <td><img src="statics/palm.webp" alt="Omani Palm " class="productImg"></td>
-                <td>Omani Palm Tree</td>
-                <td>10</td>
-
-            </tr>
-            <tr>
-                <td><img src="statics/mingt.jpg" alt="Mint" class="productImg"></td>
-                <td>Mint</td>
-                <td>0.6</td>
-
-            </tr>
-            <tr>
-                <td><img src="statics/orange.jpg" alt="Orange Tree" class="productImg"></td>
-                <td>Orange Tree</td>
-                <td>4</td>
-
-            </tr>
-            <tr>
-                <td><img src="statics/fruit.jpg" alt="Elberta Peach Tree" class="productImg"></td>
-                <td>Elberta Peach Tree</td>
-                <td>6.5</td>
-
-            </tr>
-        </tbody>
-    </table>
+    <table class="table tableHover table-bordered mt-4" id="treeTable">
+      <thead class="thead-dark">
+        <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Price (OMR)</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody id="treeTableBody">
+    </tbody>
+</table>
 </div>
 
 
@@ -121,5 +116,20 @@
 <footer class="backgroundings foot">
 [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
 </footer>
+<!--Creating an array of trees and by using it we create the table-->
+<script>
+  
+  const trees = [
+      new Product("Lemon Tree", 3.5, "statics/lemon.jpg"),
+      new Product("Celeste Fig Tree", 0.5, "statics/fig.jpg"),
+      new Product("Omani Palm Tree", 10, "statics/palm.webp"),
+      new Product("Mint", 0.6, "statics/mingt.jpg"),
+      new Product("Orange Tree", 4, "statics/orange.jpg"),
+      new Product("Elberta Peach Tree", 6.5, "statics/fruit.jpg")
+  ];
+  window.onload = function() {
+      createTable('treeTableBody', trees);
+  };
+</script>
 </body>
 </html>

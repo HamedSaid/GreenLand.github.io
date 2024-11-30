@@ -70,3 +70,48 @@ imgsElemnt.style.opacity =  `${opacity}`;
 // add the day and time
 // var today = new Date();
 // dayElement.innerHTML = today;
+
+/* This is a constructor function to create trees,seeds and flowers
+objects so we can insert them in array after that to generate the table
+We used 3 arrays which can be found in trees.html,flowers.html and seeds.html 
+*/
+
+function Product(name, price, image) {
+    this.name = name;
+    this.price = price;
+    this.image = image;
+}
+
+/* This function is to create a table with product data like name,price,image and add to cart button
+which is assuming button to add a product in cart but it only shows an alert that the item has been added successfully
+
+*/
+function createTable(tableID, productsArray) {
+    const tableBody = document.getElementById(tableID);
+    let rows = '';
+    for (const product of productsArray) {
+        rows += `
+            <tr>
+                <td><img src="${product.image}" alt="${product.name}" class="productImg"></td>
+                <td>${product.name}</td>
+                <td>${product.price}</td>
+                <td><button class="btn btnBackground" onclick="alert('${product.name} added successfully.')">Add to Cart</button></td>
+            </tr>
+        `;
+    }
+    tableBody.innerHTML = rows;
+}
+
+/*This function Search for information from the arrays by entering each element in the array and compare it to the search key
+*/ 
+
+function search(inputID, tableID, products) {
+    const searchKey = document.getElementById(inputID).value.toLowerCase();
+    let filteredProducts = [];
+    for (const product of products) {
+        if (product.name.toLowerCase().includes(searchKey)) {
+            filteredProducts.push(product);
+        }
+    }
+    createTable(tableID, filteredProducts);
+}
