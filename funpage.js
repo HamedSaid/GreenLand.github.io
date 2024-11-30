@@ -1,35 +1,16 @@
-
-// // this file for funpage.html
-
-// this for make the play button move
-var playbutton = document.getElementById("play");
-var width_button = playbutton.style.width;
-var height_button = playbutton.style.height;
-
-console.log(width_button)
-console.log(height_button)
-
-function moving() {
-    if (playbutton.style.width < 200) {
-        playbutton.style.width = `${500}`;
-        playbutton.style.height = 5;
-    }
-    else {
-        playbutton.style.width = width_button;
-        playbutton.style.height = height_button;
-    }
-}
-
-setInterval(moving, 1000)
-
+ // this file for funpage.html
 
 
 // move to play page
 var coverPage = document.getElementById("coverPage");
 var playPage = document.getElementById("playPage");
 var gameOverPage = document.getElementById("gameOverPage");
+const coverPageImages = setInterval(changeCoverImages, 1500)
 
+
+// when the user click in coverPage (play new)
 function startPlay() {
+    clearInterval(coverPageImages)
     coverPage.style.display =  "none";
     playPage.style.display =  "block";
     playGame()
@@ -42,12 +23,26 @@ var scoreElement = document.getElementById("score");
 var timeElement = document.getElementById("time");
 var scoreElement2 = document.getElementById("score2");
 var timeElement2 = document.getElementById("time2");
+var discountElement = document.getElementById("discount");
+var congratulationsEle = document.getElementById("congratulations");
+
 var qesiElement = document.getElementById("qesi");
 
+// variables to control the imags
 var imgElement1 = document.getElementById("img1");
 var imgElement2 = document.getElementById("img2");
 var imgElement3 = document.getElementById("img3");
 
+var imgElement4 = document.getElementById("img4");
+var imgElement5 = document.getElementById("img5");
+var imgElement6 = document.getElementById("img6");
+
+var imgElement7 = document.getElementById("img7");
+var imgElement8 = document.getElementById("img8");
+var imgElement9 = document.getElementById("img9");
+
+
+// list for sourse and there names 
 var imags = [
             "statics/grapes.jpg","statics/plam.jpg", "statics/orange.jpg",
             "statics/straw.jpg", "statics/pog.jpg", "statics/mingt.jpg",
@@ -63,10 +58,13 @@ var names = [
 var score = 0;
 var time = 10.0;
 
-var answer_index = Math.floor(Math.random() * imags.length);
-var quesion = names[answer_index]; 
+var answer_index;
+var quesion;
 
+
+// the main part of the game
 function playGame() {
+    createAnswer()
     scoreElement.innerHTML = "score= " + score;
     timeElement.innerHTML =  "time = " + time;
     
@@ -74,7 +72,7 @@ function playGame() {
     
 
     // change images randomly
-    randomimages()
+    changeImages()
 
     function timegoOut() {
         if (time == 0) {
@@ -90,45 +88,81 @@ function playGame() {
 }
 
 
-function randomimages() {
-    var ranIndex1 = Math.floor(Math.random() * imags.length);
-    var ranIndex2 = Math.floor(Math.random() * imags.length);
-    var ranIndex3 = Math.floor(Math.random() * imags.length);
-    var ranIndex4 = Math.floor(Math.random() * imags.length);
-    var ranIndex5 = Math.floor(Math.random() * imags.length);
-    var ranIndex6 = Math.floor(Math.random() * imags.length);
-    var ranIndex7 = Math.floor(Math.random() * imags.length);
-    var ranIndex8 = Math.floor(Math.random() * imags.length);
-    var ranIndex9 = Math.floor(Math.random() * imags.length);
+// change images in the game from the basic of html
+function changeImages() {
+    // to make loop
+    var imgElementsList = [
+        imgElement1, imgElement2, imgElement3,
+        imgElement4, imgElement5, imgElement6,
+        imgElement7, imgElement8, imgElement9
+                        ]
 
-    //for answer
-    var srcsList = [ranIndex1, ranIndex2, ranIndex3,ranIndex4,ranIndex5,ranIndex6,ranIndex7,ranIndex8,ranIndex9];
-    var randSrcIndex = Math.floor(Math.random() * srcsList.length);
     
-    // check that the images will no repeat
-    while(ranIndex1 == ranIndex2) {
-        ranIndex2 = Math.floor(Math.random() * imags.length);
+    // change sources for all imgs
+    for (var i =0; i < imgElementsList.length; i++) {
+        imgElementsList[i].src = imags[i]
     }
+    
 
-    while(ranIndex3 == ranIndex2 || ranIndex3 == ranIndex1) {
-        ranIndex3 = Math.floor(Math.random() * imags.length);
-    }
-
-    // to make sure that the answer will apper
-    imags[randSrcIndex] = srcsList[randSrcIndex]; 
-
-
-    imgElement1.src = imags[ranIndex1];
-    imgElement2.src = imags[ranIndex2];
-    imgElement3.src = imags[ranIndex3];
+    // so the programme go outside this function after finish
     return
 }
 
 
 
+// if the time out
 function gameOver() {
-    scoreElement2.innerHTML = "score= " + score;
-    timeElement2.innerHTML =  "time = " + time;
+    
+    var discount = 0;
 
+    if (score >= 5) {
+        discount = ( 1 / score) ;
+        discountElement.innerHTML = "discount= " + discount;
+        congratulationsEle.style.display = "block";
+    }
+
+    scoreElement2.innerHTML = "score= " + score;  
     gameOverPage.style.display = "block";
+
+    
 }
+
+
+// this for checking if the user click in the correct answer
+function checkAnswer(id) {
+    if (answer_index == id) {
+        console.log("correct answer");
+        score++;
+        time++;
+        playGame()
+    }
+    
+}
+
+// create answers
+function createAnswer() {
+    answer_index = Math.floor(Math.random() * imags.length);
+    quesion = names[answer_index];
+    return
+}
+
+
+// this for change the images in the cover page
+function changeCoverImages() {
+    var coverImgElem1 = document.getElementById("coverImg1");
+    var coverImgElem2 = document.getElementById("coverImg2");
+    var coverImgElem3 = document.getElementById("coverImg3");
+    var randomIndex;
+    
+    var coverImagesList = [
+        coverImgElem1, coverImgElem2, coverImgElem3
+    ]
+
+    for (var i = 0; i < 3; i++) {
+        randomIndex = Math.floor(Math.random() * imags.length)
+        coverImagesList[i].src = imags[randomIndex]
+    }
+    return
+}
+
+
