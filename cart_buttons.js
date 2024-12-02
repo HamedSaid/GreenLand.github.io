@@ -41,7 +41,7 @@ document.getElementById("increment_2").addEventListener("click", () => {
 });
 
 document.getElementById("decrement_2").addEventListener("click", () => {
-    if (Lilac > 0) {
+    if (Lilac == 1) {
         document.getElementById("results_buttons_2").innerHTML = --Lilac;
     }
     total_price();
