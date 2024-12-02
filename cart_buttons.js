@@ -41,11 +41,12 @@ document.getElementById("increment_2").addEventListener("click", () => {
 });
 
 document.getElementById("decrement_2").addEventListener("click", () => {
-    if (Lilac == 1) {
+    if (Pomegranate_tree > 0) {
         document.getElementById("results_buttons_2").innerHTML = --Lilac;
     }
     total_price();
 });
+
 
 // intialize variables of prices of trees
 const Plam_price_for_one = 10;
