@@ -17,10 +17,23 @@
       <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
     
     <style>
+        
+        
+        
         .imgs {
+            width: 250px;
+            height: 150px;
+            border: 10px  ;
+            border-style: none;
+            border-radius: 20px;
+            border-color: black;
+            margin: 10px;
+        }
+
+        .Coverimgs {
             width: 300px;
             height: 200px;
-            border: 10px  ;
+            border: 10px;
             border-style: none;
             border-radius: 20px;
             border-color: black;
@@ -30,9 +43,11 @@
         .background {
             background-color: rgba(97, 193, 66, 0.881);
             text-align: center;  
-            width: 100vw; 
-            height: 100vw;
+            width: 100%; 
+            height: 100%;
         }
+
+        
 
     </style>
 </head>
@@ -87,11 +102,14 @@
         <h3>
             Guess the correct tree and get a discount!   
         </h3>
+        <h5>
+            Get 7 questions correct to get a discount.
+        </h5>
 
         <div class="container" >
-            <img src="statics/plam.jpg" class="imgs" id="coverImg1">
-            <img src="statics/plam.jpg" class="imgs" id="coverImg2">
-            <img src="statics/plam.jpg" class="imgs" id="coverImg3">
+            <img src="statics/plam.jpg" class="Coverimgs" id="coverImg1">
+            <img src="statics/plam.jpg" class="Coverimgs" id="coverImg2">
+            <img src="statics/plam.jpg" class="Coverimgs" id="coverImg3">
         </div>
         
 
@@ -101,7 +119,6 @@
         </button>
     </div> 
     
-
     
     <!-- ----------------------------------------------------------------------------------------------------------- -->
     <!-- this only for play page -->
@@ -112,7 +129,7 @@
 
     <h2 id="qesi"></h2>
 
-    <div class="container">
+    <div class="container p-5">
         <a  href="#" id="0"  onclick="checkAnswer(this.id)"><img src="statics/plam.jpg" class="imgs" id="img1"></a>
         <a  href="#" id="1"  onclick="checkAnswer(this.id)"><img src="statics/plam.jpg" class="imgs" id="img2"></a>
         <a  href="#" id="2"  onclick="checkAnswer(this.id)"><img src="statics/plam.jpg" class="imgs" id="img3"></a>
@@ -129,7 +146,7 @@
 
     <!-- ----------------------------------------------------------------------------------------------------------- -->
     <!-- this only for GameOver Page -->
-    <div class="background container-fluid" id="gameOverPage" style="display: none;">
+    <div class="background container-fluid" id="gameOverPage" style="display: none; height: 9;">
         <h2>GameOver Try Again!</h2>
         <h4 id="score2" style="text-align: center;"></h4>
                 
@@ -137,10 +154,10 @@
             <h2>congratulations! you get a discount:</h2>
             <h4 id="discount" style="text-align: center;"></h4>
         </div>
-      </div>
+    </div>
    
-  <footer class="backgroundings foot">
-    [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
+    <footer class="backgroundings foot">
+        [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
     </footer>
 </body>
 
