@@ -3,7 +3,7 @@
 // get elements by ID
 var titleElemnt = document.getElementById("title");
 var imgsElemnt = document.getElementById("img");
-// var dayElement = document.getElementById("day");
+var dayElement = document.getElementById("day");
 
 
 // array of images url
@@ -68,8 +68,9 @@ imgsElemnt.style.opacity =  `${opacity}`;
 }
 
 // add the day and time
-// var today = new Date();
-// dayElement.innerHTML = today;
+var today = new Date();
+dayElement.innerHTML = today;
+
 
 /* This is a constructor function to create trees,seeds and flowers
 objects so we can insert them in array after that to generate the table
