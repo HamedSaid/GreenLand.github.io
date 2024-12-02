@@ -92,9 +92,7 @@ const validateInputs = () => {
     // true
     else {
         setSuccess(phoneNumber);
-    }
-
-    
+    }   
 };
 
 
