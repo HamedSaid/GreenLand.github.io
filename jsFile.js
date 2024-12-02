@@ -12,6 +12,7 @@ var index = 0;
 var opacity = 0;
 
 // to change the style when the mouse move over the elemnt
+// the doctor allow my to do it in the top. this for Q5.A 
 function hoverJS() {
 titleElemnt.style.backgroundColor = "rgb(42, 74, 70)";
 titleElemnt.style.transformStyle = "preserve-3d";
