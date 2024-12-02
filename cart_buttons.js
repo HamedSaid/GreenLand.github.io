@@ -8,7 +8,7 @@ document.getElementById("increment").addEventListener("click", () => {
 });
 
 document.getElementById("decrement").addEventListener("click", () => {
-    if (plam_tree > 0) {
+    if (plam_tree > 1) {
         document.getElementById("results_buttons").innerHTML = --plam_tree;
     }
     total_price();
@@ -25,7 +25,7 @@ document.getElementById("increment_1").addEventListener("click", () => {
 });
 
 document.getElementById("decrement_1").addEventListener("click", () => {
-    if (Pomegranate_tree > 0) {
+    if (Pomegranate_tree > 1) {
         document.getElementById("results_buttons_1").innerHTML = --Pomegranate_tree;
     }
     total_price();
@@ -41,12 +41,11 @@ document.getElementById("increment_2").addEventListener("click", () => {
 });
 
 document.getElementById("decrement_2").addEventListener("click", () => {
-    if (Pomegranate_tree > 0) {
+    if (Lilac > 1) {
         document.getElementById("results_buttons_2").innerHTML = --Lilac;
     }
     total_price();
 });
-
 
 // intialize variables of prices of trees
 const Plam_price_for_one = 10;
