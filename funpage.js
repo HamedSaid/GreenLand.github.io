@@ -56,7 +56,7 @@ var names = [
             ];
 
 var score = 0;
-var time = 1.0;
+var time = 10.0;
 
 var answer_index;
 var quesion;
