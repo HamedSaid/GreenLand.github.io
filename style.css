@@ -14,7 +14,7 @@
 
 .typesElement:hover {
     transition-duration: 500ms;
-    transform: translateY(-10px);
+    transform: translateY(-20px);
 }
 
 .typesElement a {
