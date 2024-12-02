@@ -1,3 +1,4 @@
+// this code control the  of results_buttons for quantity of plam_tree
 var plam_tree = 1;
 document.getElementById("results_buttons").innerHTML = plam_tree;
 
@@ -13,6 +14,8 @@ document.getElementById("decrement").addEventListener("click", () => {
     total_price();
 });
 
+
+// this code control the  of results_buttons_1 for quantity of Pomegranate_tree
 var Pomegranate_tree = 1;
 document.getElementById("results_buttons_1").innerHTML = Pomegranate_tree;
 
@@ -28,6 +31,7 @@ document.getElementById("decrement_1").addEventListener("click", () => {
     total_price();
 });
 
+// this code control the  of results_buttons_1 for quantity of Lilac
 var Lilac = 1;
 document.getElementById("results_buttons_2").innerHTML = Lilac;
 
@@ -43,6 +47,7 @@ document.getElementById("decrement_2").addEventListener("click", () => {
     total_price();
 });
 
+// intialize variables of prices of trees
 const Plam_price_for_one = 10;
 const Pomegranate_price_for_one = 2;
 const Lilac_price_for_one = 2.5;
@@ -52,7 +57,7 @@ function total_price() {
     const quantity = [plam_tree, Pomegranate_tree, Lilac];
     const prices = [Plam_price_for_one, Pomegranate_price_for_one, Lilac_price_for_one];
     let total = 0;
-
+    // use loop to count the total
     for (let i = 0; i < prices.length; i++) {
         total += prices[i] * quantity[i];
     }
