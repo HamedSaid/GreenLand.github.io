@@ -123,8 +123,6 @@ function gameOver() {
 
     scoreElement2.innerHTML = "score= " + score;  
     gameOverPage.style.display = "block";
-
-    
 }
 
 

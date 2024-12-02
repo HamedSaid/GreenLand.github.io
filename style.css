@@ -20,8 +20,29 @@
 .typesElement a {
     text-decoration: none;
     color: black;
-
 }
+
+
+
+.newFutersElement {
+    background-color: rgba(225,223,219,1);
+    border-radius: 10px;
+    text-align: center;
+    height: 450px;   
+}
+
+
+.newFutersElement:hover {
+    transition-duration: 500ms;
+    transform: scale(0.9);
+}
+
+
+.newFutersElement a {
+    text-decoration: none;
+    color: black;
+}
+
 
 
 
