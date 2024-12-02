@@ -59,38 +59,12 @@ function total_price() {
 
     // the benefit of the tofixed for numbers of float after the comma x.00
     document.getElementById("total_all_prices").innerHTML = total.toFixed(2);
-    document.getElementById("total_all_prices_1").innerHTML = total.toFixed(2);
-
+    localStorage.setItem('total_price', total.toFixed(2));
 }
 
 // Initialize the total price 
 total_price();
 
 
-// for pay cart
- // Function to calculate the total bill
- function calculateBill() {
-    // Get the input values
-    
 
-    // Validate inputs
-    if ( isNaN(age) || age <= 0) {
-        document.getElementById('result').innerText = "Please enter valid inputs.";
-        return;
-    }
-    else{        document.getElementById('result').innerText = "";
-    }
 
-    
-
-    // Apply a 10% discount if the customer is above 60 years old
-    if (age > 60) {
-        total = total - (total * 0.10); // Subtract 10% discount
-    }
-
-    // Display the result
-    document.getElementById('result').innerHTML = `
-        Total Bill: $${total.toFixed(2)} 
-        ${age > 60 ? '(10% Senior Discount Applied)' : ''}
-    `;
-}

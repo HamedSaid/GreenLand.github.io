@@ -104,7 +104,7 @@
 
 
 .foot{
-    background-color: rgb(42, 74, 70);
+    background-color: #2a4a46;
     color: white;
     text-align: center;
     padding: 20px;
@@ -158,7 +158,7 @@ textarea::placeholder{
 
 /* Questionnaire page */
 #backgrouding_form{
-    background-image: linear-gradient(to  right, #3eb489 , #90EE90) ;
+    background-image: linear-gradient(to  right, #4A2A2E, #2a4a46) ;
     font-family: 'Poppins', sans-serif;
 }
 

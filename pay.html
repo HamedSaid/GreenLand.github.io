@@ -112,20 +112,7 @@
 
           <div class="form-group">
               <label for="item-price">Totla Price (RO) before:</label>
-              <h6><span id="total_all_prices_1">0</span> R.O</h6>
-          </div>
-
-          <div class="form-group">
-              <label for="age">Customer Age:</label>
-              <input type="number" id="age" placeholder="Enter customer age">
-          </div>
-
-          <button class="btn btn-success" onclick="calculateBill()">Calculate Bill</button>
-          <div class="result" id="result"></div>
-
-          <div class="form-group">
-            <label for="item-price">Totla Price (RO) after:</label>
-            <h6><span id="total_all_prices_1">0</span> R.O</h6>
+              <h6><span id="display_total_price">0</span> R.O</h6>
           </div>
           
       </div>
@@ -197,5 +184,20 @@
     [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
     </footer>
     
+
+    <script>
+          document.addEventListener("DOMContentLoaded", () => {
+        const totalPrice = localStorage.getItem('total_price');
+
+        if (totalPrice) {
+            // Update an element to show the total price
+            document.getElementById("display_total_price").innerHTML = totalPrice;
+        } else {
+            // Handle cases where the total price is not set
+            document.getElementById("display_total_price").innerHTML = "0.00";
+        }
+    });
+
+    </script>
   </body>
 </html>
