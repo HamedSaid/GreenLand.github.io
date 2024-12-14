@@ -1,21 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-      
-    <title>Done</title>
-    
+
+    <title>Contact Us</title>
     <!-- this for bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    
     <!-- for the style sheet-->
     <link rel="stylesheet" href="style.css">
+   
+   <?php
+// Creating a class to store the contact us information 
+class Contact{
+    public $name;
+    public $email;
+    public $phoneNum;
+    public $message;
 
+    // A constructor for the  class Contact
+    public function __construct($name, $email, $phoneNum, $message) {
+        $this->name = htmlspecialchars($name);
+        $this->email = htmlspecialchars($email);
+        $this->phoneNum = htmlspecialchars($phoneNum);
+        $this->message = htmlspecialchars($message);
+    }
 
-    
+    // a function to display the stored data in a table
+    public function display() {
+        echo "<h2 class='text-center backgroundings' id='title'>Submitted Contact Information</h2>";
+        echo "<table class='table table-bordered table-striped'>";
+        echo "<thead class='table-dark'>";
+        echo "<tr><th>Name</th><th>Email</th><th>Phone Number</th><th>Message</th></tr>";
+        echo "</thead>";
+        echo "<tbody>";
+        echo "<tr>";
+        echo "<td>{$this->name}</td>";
+        echo "<td>{$this->email}</td>";
+        echo "<td>{$this->phoneNum}</td>";
+        echo "<td>{$this->message}</td>";
+        echo "</tr>";
+        echo "</tbody>";
+        echo "</table>";
+    }
+}
+
+// Check if there is information recived from the user and if there is display it
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $contact = new Contact($_POST['name'], $_POST['Email'], $_POST['number'], $_POST['Message']);
+}
+?>
 </head>
 <body>
-     <!-- this is the header-->
+    <!-- this is the header-->
      <!-- this is the header-->
      <nav class="navbar navbar-expand-sm  navbar-dark backgroundings">
       <ul class="navbar-nav">
@@ -56,30 +92,15 @@
       </ul>
     </nav>
 
-    
-    <div class="container-fluid text-center p-1" style="background-color: rgba(42,74,70,1);">
-        <h1 style="color: white;">We Are Done!</h1>
-    </div>
-
-
-    <div class="container m-4">
-        <img src="statics/agri.jpg" width="50%"  class="mx-auto d-block" style="border-radius: 20px; ">
-    </div>
-
-
-    <div class="container m-3 text-center " style="height: 100px;">
-        <h3> Thank You For Shoping</h3>
-        <h5> One Of Our Team Will Contact With You Soon...</h5>
-    </div>
-    
-    
-
-
-
-    <!-- this is the footer-->
-    <footer class="backgroundings foot">
-        [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
-    </footer>
-    
+    <?php
+    //Check if the variable is declared or not if it is then display it
+    if (isset($contact)) {
+        $contact->display(); 
+    }
+    ?>
+    <!--This is the footer-->
+<footer class="backgroundings foot">
+[123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
+</footer>
 </body>
 </html>

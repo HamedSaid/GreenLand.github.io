@@ -15,8 +15,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
     
-    <script src="jsFile.js"></script>
-
 <style>
 
     /* Style for table images */ 
@@ -39,11 +37,10 @@
 
 
 
-
 </style>
 </head>
 <body>
-     <!-- this is the header-->
+ <!-- this is the header-->
      <!-- this is the header-->
      <nav class="navbar navbar-expand-sm  navbar-dark backgroundings">
       <ul class="navbar-nav">
@@ -84,54 +81,85 @@
       </ul>
     </nav>
 
-  
+
 <h1 class="text-center backgroundings" id="title">Trees</h1>
- 
-<!--Search-->
 
-  <div class="containter mt-4 search">
-    <h3 style="color: rgba(11, 100, 90, 1);">Search for specific tree:</h3>
-    <input type="text" id="searchTreeInput" placeholder="Enter tree name" class="form-control searchInput">
-    <button class="btn btnBackground mt-2" onclick="search('searchTreeInput', 'treeTableBody', trees)">Search</button>
-  </div>
+    <div class="container mt-5">
+        <!-- Search Form -->
+        <div class="search">
+            <h3 style="color: rgba(11, 100, 90, 1);">Search for specific tree:</h3>
+            <form method="GET" class="d-flex justify-content-center align-items-center">
+            <input type="text" name="search" placeholder="Enter tree name" class="form-control searchInput" style="width: 400px; padding: 10px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc; margin: 0 auto;">
 
+                <button type="submit" class="btn btnBackground">Search</button>
+            </form>
+        </div>
 
-  <!--Creating the table-->
-  <div class="container mt-5">
-    <table class="table tableHover table-bordered mt-4" id="treeTable">
-      <thead class="thead-dark">
-        <tr>
-            <th scope="col">Image</th>
-            <th scope="col">Product Name</th>
-            <th scope="col">Price (OMR)</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody id="treeTableBody">
-    </tbody>
-</table>
-</div>
+        <!-- Table -->
+        <?php
+        // Creating class product
+        class Product {
+            public $name;
+            public $price;
+            public $image;
+            //the constructor of class product
+            public function __construct($name, $price, $image) {
+                $this->name = $name;
+                $this->price = $price;
+                $this->image = $image;
+            }
+        }
 
+        // Creating array of trees
+        $trees = [
+          new Product("Lemon Tree", 3.5, "statics/lemon.jpg"),
+          new Product("Celeste Fig Tree", 0.5, "statics/fig.jpg"),
+          new Product("Omani Palm Tree", 10, "statics/palm.webp"),
+          new Product("Mint", 0.6, "statics/mingt.jpg"),
+          new Product("Orange Tree", 4, "statics/orange.jpg"),
+          new Product("Elberta Peach Tree", 6.5, "statics/fruit.jpg")
+        ];
 
+        //function to search 
+        $filteredTrees = $trees;
+        if (isset($_GET['search']) && !empty($_GET['search'])) {
+            $searchQuery = strtolower($_GET['search']);
+            $filteredTrees = array_filter($trees, function ($tree) use ($searchQuery) {
+                return strpos(strtolower($tree->name), $searchQuery) !== false;
+            });
+        }
+
+        //Displaying the table
+        echo "<div class='container mt-4'>";
+        echo "<table class='table table-hover table-bordered tableHover'>";
+        echo "<thead class='table-dark'>";
+        echo "<tr>
+                <th>Image</th>
+                <th>Product Name</th>
+                <th>Price (OMR)</th>
+                <th>Action</th>
+              </tr>";
+        echo "</thead>";
+        echo "<tbody>";
+
+        foreach ($filteredTrees as $tree) {
+            echo "<tr>
+                    <td><img src='{$tree->image}' class='productImg' alt='{$tree->name}'></td>
+                    <td>{$tree->name}</td>
+                    <td>{$tree->price}</td>
+                    <td><button class='btn btnBackground'>Add to Cart</button></td>
+                  </tr>";
+        }
+
+        echo "</tbody>";
+        echo "</table>";
+        echo "</div>";
+        ?>
+    </div>
 
 <!--This is the footer-->
 <footer class="backgroundings foot">
 [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
 </footer>
-<!--Creating an array of trees and by using it we create the table-->
-<script>
-  
-  const trees = [
-      new Product("Lemon Tree", 3.5, "statics/lemon.jpg"),
-      new Product("Celeste Fig Tree", 0.5, "statics/fig.jpg"),
-      new Product("Omani Palm Tree", 10, "statics/palm.webp"),
-      new Product("Mint", 0.6, "statics/mingt.jpg"),
-      new Product("Orange Tree", 4, "statics/orange.jpg"),
-      new Product("Elberta Peach Tree", 6.5, "statics/fruit.jpg")
-  ];
-  window.onload = function() {
-      createTable('treeTableBody', trees);
-  };
-</script>
 </body>
 </html>

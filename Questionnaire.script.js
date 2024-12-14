@@ -8,10 +8,11 @@ const textarea = document.getElementById('text_area');
 
 // function for submit button
 form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    validateInputs();
-}
-);
+    // If validation fails, prevent submission
+    if (!validateInputs()) {
+        e.preventDefault();
+    }
+});
 
 // recieve two parameters if is it error, will add error and remove success
 const setError = (element, message) => {

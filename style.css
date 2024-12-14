@@ -291,11 +291,13 @@ textarea::placeholder{
 }
 
 .searchInput{
-    width: 30%;
-    margin-bottom: 15px;
-    padding: 15px;
+    width: 50% !important; 
+    min-width: 300px; 
+    padding: 10px !important; 
+    font-size: 16px; 
+    border-radius: 8px; 
+    border: 1px solid #ccc; 
 }
-
 .btnBackground{
     background-color:  rgb(111, 165, 133);
     border: 1px solid black;

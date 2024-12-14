@@ -38,7 +38,6 @@
 
 
 </style>
-<script src="jsFile.js"></script>
 </head>
 <body>
  <!-- this is the header-->
@@ -85,50 +84,82 @@
 
 <h1 class="text-center backgroundings" id="title">Flowers</h1>
 
-<!--Search-->
+    <div class="container mt-5">
+        <!-- Search Form -->
+        <div class="search">
+            <h3 style="color: rgba(11, 100, 90, 1);">Search for specific tree:</h3>
+            <form method="GET" class="d-flex justify-content-center align-items-center">
+            <input type="text" name="search" placeholder="Enter flower name" class="form-control searchInput" style="width: 400px; padding: 10px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc; margin: 0 auto;">
 
-<div class="containter mt-4 search">
-  <h3 style="color: rgba(11, 100, 90, 1);">Search for specific flower:</h3>
-  <input type="text" id="searchFlowerInput" placeholder="Enter flower name" class="form-control searchInput">
-  <button class="btn btnBackground mt-2" onclick="search('searchFlowerInput', 'flowerTableBody', flowers)">Search</button>
-</div>
+                <button type="submit" class="btn btnBackground">Search</button>
+            </form>
+        </div>
 
- 
-<!--Creating the table-->
-<div class="container mt-5">
-  <table class="table tableHover table-bordered mt-4" id="flowerTable">
-    <thead class="thead-dark">
-      <tr>
-          <th scope="col">Image</th>
-          <th scope="col">Product Name</th>
-          <th scope="col">Price (OMR)</th>
-          <th scope="col"></th>
-      </tr>
-  </thead>
-  <tbody id="flowerTableBody">
-  </tbody>
-</table>
-</div>
+        <!-- Table -->
+        <?php
+        // Creating class product
+        class Product {
+            public $name;
+            public $price;
+            public $image;
+            //the constructor of class product
+            public function __construct($name, $price, $image) {
+                $this->name = $name;
+                $this->price = $price;
+                $this->image = $image;
+            }
+        }
 
+        // Creating array of flowers
+        $flowers = [
+            new Product("Royal Star Magnolia Tree", 1.5, "statics/flower1.jpg"),
+            new Product("Carolina Jasmine", 0.5, "statics/flower.jpg"),
+            new Product("Hybrid Tea Roses", 4, "statics/flower6.jpg"),
+            new Product("Narcissus", 3.6, "statics/flower2.jpg"),
+            new Product("Lilac", 2.5, "statics/LilacFlower.jpg"),
+            new Product("Peony", 9, "statics/flower4.jpg")
+        ];
 
+        //function to search 
+        $filteredFlowers = $flowers;
+        if (isset($_GET['search']) && !empty($_GET['search'])) {
+            $searchQuery = strtolower($_GET['search']);
+            $filteredFlowers = array_filter($flowers, function ($flower) use ($searchQuery) {
+                return strpos(strtolower($flower->name), $searchQuery) !== false;
+            });
+        }
+
+        //Displaying the table
+        echo "<div class='container mt-4'>";
+        echo "<table class='table table-hover table-bordered tableHover'>";
+        echo "<thead class='table-dark'>";
+        echo "<tr>
+                <th>Image</th>
+                <th>Product Name</th>
+                <th>Price (OMR)</th>
+                <th>Action</th>
+              </tr>";
+        echo "</thead>";
+        echo "<tbody>";
+
+        foreach ($filteredFlowers as $flower) {
+            echo "<tr>
+                    <td><img src='{$flower->image}' class='productImg' alt='{$flower->name}'></td>
+                    <td>{$flower->name}</td>
+                    <td>{$flower->price}</td>
+                    <td><button class='btn btnBackground'>Add to Cart</button></td>
+                  </tr>";
+        }
+
+        echo "</tbody>";
+        echo "</table>";
+        echo "</div>";
+        ?>
+    </div>
 
 <!--This is the footer-->
 <footer class="backgroundings foot">
 [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
 </footer>
-<!--Creating an array of flowers and by using it we create the table-->
-<script>
-  const flowers = [
-      new Product("Royal Star Magnolia Tree", 1.5, "statics/flower1.jpg"),
-      new Product("Carolina Jasmine", 0.5, "statics/flower.jpg"),
-      new Product("Hybrid Tea Roses", 4, "statics/flower6.jpg"),
-      new Product("Narcissus", 3.6, "statics/flower2.jpg"),
-      new Product("Lilac", 2.5, "statics/LilacFlower.jpg"),
-      new Product("Peony", 9, "statics/flower4.jpg")
-  ];
-  window.onload = function() {
-      createTable('flowerTableBody', flowers);  
-  };
-</script>
 </body>
 </html>

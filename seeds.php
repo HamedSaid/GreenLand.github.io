@@ -38,10 +38,9 @@
 
 
 </style>
-<script src="jsFile.js"></script>
 </head>
 <body>
- <!-- this is the header-->
+  <!-- this is the header-->
      <!-- this is the header-->
      <nav class="navbar navbar-expand-sm  navbar-dark backgroundings">
       <ul class="navbar-nav">
@@ -83,55 +82,84 @@
     </nav>
 
 
-  
 <h1 class="text-center backgroundings" id="title">Seeds</h1>
 
-<!--Search-->
+    <div class="container mt-5">
+        <!-- Search Form -->
+        <div class="search">
+            <h3 style="color: rgba(11, 100, 90, 1);">Search for specific seed:</h3>
+            <form method="GET" class="d-flex justify-content-center align-items-center">
+            <input type="text" name="search" placeholder="Enter seed name" class="form-control searchInput" style="width: 400px; padding: 10px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc; margin: 0 auto;">
 
-<div class="containter mt-4 search">
-  <h3 style="color: rgba(11, 100, 90, 1);">Search for specific seed:</h3>
-  <input type="text" id="searchSeedInput" placeholder="Enter seed name" class="form-control searchInput">
-  <button class="btn btnBackground mt-2" onclick="search('searchSeedInput', 'seedTableBody', seeds)">Search</button>
-</div>
+                <button type="submit" class="btn btnBackground">Search</button>
+            </form>
+        </div>
 
- 
-  <!--Creating the table-->
-<div class="container mt-5">
-  <table class="table tableHover table-bordered mt-4" id="seedTable">
-    <thead class="thead-dark">
-      <tr>
-          <th scope="col">Image</th>
-          <th scope="col">Product Name</th>
-          <th scope="col">Price (OMR)</th>
-          <th scope="col"></th>
-      </tr>
-  </thead>
-  <tbody id="seedTableBody">
-  </tbody>
-</table>
-</div>
+        <!-- Table -->
+        <?php
+        // Creating class product
+        class Product {
+            public $name;
+            public $price;
+            public $image;
+            //the constructor of class product
+            public function __construct($name, $price, $image) {
+                $this->name = $name;
+                $this->price = $price;
+                $this->image = $image;
+            }
+        }
 
+        // Creating array of seeds
+        $seeds = [
+            new Product("Granny Apple Tree", 1.5, "statics/apple.webp"),
+            new Product("Pomegranate Tree", 2, "statics/pog.jpg"),
+            new Product("Bing Cherry Tree", 3, "statics/straw.jpg"),
+            new Product("Strawberry", 1.4, "statics/strawbery.jpg"),
+            new Product("Grape Fruit", 0.8, "statics/grapes.jpg"),
+            new Product("Papaya Fruit", 0.5, "statics/papaya.webp")
+        ];
 
+        //function to search 
+        $filteredSeeds = $seeds;
+        if (isset($_GET['search']) && !empty($_GET['search'])) {
+            $searchQuery = strtolower($_GET['search']);
+            $filteredSeeds = array_filter($seeds, function ($seed) use ($searchQuery) {
+                return strpos(strtolower($seed->name), $searchQuery) !== false;
+            });
+        }
 
+        //Displaying the table
+        echo "<div class='container mt-4'>";
+        echo "<table class='table table-hover table-bordered tableHover'>";
+        echo "<thead class='table-dark'>";
+        echo "<tr>
+                <th>Image</th>
+                <th>Product Name</th>
+                <th>Price (OMR)</th>
+                <th>Action</th>
+              </tr>";
+        echo "</thead>";
+        echo "<tbody>";
+
+        foreach ($filteredSeeds as $seed) {
+            echo "<tr>
+                    <td><img src='{$seed->image}' class='productImg' alt='{$seed->name}'></td>
+                    <td>{$seed->name}</td>
+                    <td>{$seed->price}</td>
+                    <td><button class='btn btnBackground'>Add to Cart</button></td>
+                  </tr>";
+        }
+
+        echo "</tbody>";
+        echo "</table>";
+        echo "</div>";
+        ?>
+    </div>
 
 <!--This is the footer-->
 <footer class="backgroundings foot">
 [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
 </footer>
-
-<!--Creating an array of seeds and by using it we create the table-->
-<script>
-  const seeds = [
-      new Product("Granny Apple Tree", 1.5, "statics/apple.webp"),
-      new Product("Pomegranate Tree", 2, "statics/pog.jpg"),
-      new Product("Bing Cherry Tree", 3, "statics/straw.jpg"),
-      new Product("Strawberry", 1.4, "statics/strawbery.jpg"),
-      new Product("Grape Fruit", 0.8, "statics/grapes.jpg"),
-      new Product("Papaya Fruit", 0.5, "statics/papaya.webp")
-  ];
-  window.onload = function() {
-      createTable('seedTableBody', seeds);  
-  };
-</script>
 </body>
 </html>
