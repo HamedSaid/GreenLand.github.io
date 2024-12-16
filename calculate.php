@@ -223,7 +223,6 @@
 
         while($row = mysqli_fetch_assoc($result)) {        
             $Price_Total += $row['count'] * $row['price'];
-            echo "$Price_Total";
             echo "
                 <div class='row p-3 mt-1 cart_element'>
                 <img class='col-4' src='{$row['src']}' style='width: 20%; object-fit: cover; border-radius: 30px;'>

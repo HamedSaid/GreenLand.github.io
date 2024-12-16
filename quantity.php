@@ -27,7 +27,6 @@ else {
     $count = $_GET["quantity"];
     $count = $count - 1;
     
-
     $sql= "UPDATE greenland.cart set count=$count WHERE id=$id;";
     // $result = mysqli_query($conn, $sql); //4-execute query
     

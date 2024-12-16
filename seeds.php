@@ -188,7 +188,22 @@
       $type = $_POST["type"];
       $price = $_POST["price"];
       $src = $_POST["src"];
+
+
+      // check if the item is order in the cart 
+      $sql= "select greenland.cart WHERE item_id = $id;";
+      $result = mysqli_query($conn, $sql); //4-execute query
       
+      if (mysqli_num_rows($result) != 0) {
+          echo "
+          <script>
+            alert('ITEM is ALREADY EXISTS IN The CART!');
+          </script>
+          ";
+          header( "Location: " . $_SERVER["PHP_SELF"]);
+          exit();
+      }
+
       $sql= "INSERT INTO greenland.cart (item_id, item, type, price, count , src) VALUES ($id, '$name', '$type', $price, 1 , '$src');";
       // $result = mysqli_query($conn, $sql); //4-execute query
       
