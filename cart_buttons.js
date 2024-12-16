@@ -1,4 +1,5 @@
 // this code control the  of results_buttons for quantity of plam_tree
+
 var plam_tree = 1;
 document.getElementById("results_buttons").innerHTML = plam_tree;
 

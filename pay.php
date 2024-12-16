@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </li>
   
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="Calculate.html">Cart</a>
+          <a class="nav-link" data-toggle="tab" href="calculate.php">Cart</a>
         </li>
           
         <li class="nav-item">

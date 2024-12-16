@@ -61,7 +61,7 @@
         </li>
   
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="Calculate.html">Cart</a>
+          <a class="nav-link" data-toggle="tab" href="calculate.php">Cart</a>
         </li>
           
         <li class="nav-item">
@@ -83,49 +83,53 @@
 
 
 <h1 class="text-center backgroundings" id="title">Flowers</h1>
-
     <div class="container mt-5">
         <!-- Search Form -->
         <div class="search">
             <h3 style="color: rgba(11, 100, 90, 1);">Search for specific tree:</h3>
             <form method="GET" class="d-flex justify-content-center align-items-center">
             <input type="text" name="search" placeholder="Enter flower name" class="form-control searchInput" style="width: 400px; padding: 10px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc; margin: 0 auto;">
-
                 <button type="submit" class="btn btnBackground">Search</button>
             </form>
         </div>
+
+        <!--connect sql-->
+        <?php  
+          $type = "flowers";
+          include("get_items_byType.php");
+        ?>
 
         <!-- Table -->
         <?php
         // Creating class product
         class Product {
-            public $name;
-            public $price;
-            public $image;
-            //the constructor of class product
-            public function __construct($name, $price, $image) {
-                $this->name = $name;
-                $this->price = $price;
-                $this->image = $image;
-            }
+          public $id;
+          public $name;
+          public $price;
+          public $image;
+          //the constructor of class product
+          public function __construct($id, $name, $price, $image) {
+              $this->id = $id;                
+              $this->name = $name;
+              $this->price = $price;
+              $this->image = $image;
+          }
+      }
+
+         // Creating array of seeds
+        // get data from sql
+        $seeds = array();
+        foreach($treesData as $data) {
+          array_push($seeds, new Product($data['id'] ,$data['treeName'], $data['price'], $data['src']));
         }
 
-        // Creating array of flowers
-        $flowers = [
-            new Product("Royal Star Magnolia Tree", 1.5, "statics/flower1.jpg"),
-            new Product("Carolina Jasmine", 0.5, "statics/flower.jpg"),
-            new Product("Hybrid Tea Roses", 4, "statics/flower6.jpg"),
-            new Product("Narcissus", 3.6, "statics/flower2.jpg"),
-            new Product("Lilac", 2.5, "statics/LilacFlower.jpg"),
-            new Product("Peony", 9, "statics/flower4.jpg")
-        ];
 
         //function to search 
-        $filteredFlowers = $flowers;
+        $filteredSeeds = $seeds;
         if (isset($_GET['search']) && !empty($_GET['search'])) {
             $searchQuery = strtolower($_GET['search']);
-            $filteredFlowers = array_filter($flowers, function ($flower) use ($searchQuery) {
-                return strpos(strtolower($flower->name), $searchQuery) !== false;
+            $filteredSeeds = array_filter($seeds, callback: function ($seed) use ($searchQuery) {
+                return strpos(strtolower($seed->name), $searchQuery) !== false;
             });
         }
 
@@ -142,12 +146,22 @@
         echo "</thead>";
         echo "<tbody>";
 
-        foreach ($filteredFlowers as $flower) {
-            echo "<tr>
-                    <td><img src='{$flower->image}' class='productImg' alt='{$flower->name}'></td>
-                    <td>{$flower->name}</td>
-                    <td>{$flower->price}</td>
-                    <td><button class='btn btnBackground'>Add to Cart</button></td>
+        foreach ($filteredSeeds as $seed) {
+          $Treetype = 'seeds';  
+          echo "<tr>
+                    <td><img src='{$seed->image}' class='productImg' alt='{$seed->name}'></td>
+                    <td>{$seed->name}</td>
+                    <td>{$seed->price}</td>
+                    <td>
+                      <form method='POST' action='" .htmlspecialchars($_SERVER['PHP_SELF']) ."' class='d-flex justify-content-center align-items-center'>
+                        <input hidden type='text' name='id' value='{$seed->id}'>
+                        <input hidden type='text' name='name' value='{$seed->name}'>
+                        <input hidden type='text' name='type' value={$Treetype}>
+                        <input hidden type='text' name='price' value='{$seed->price}'>
+                        <input hidden type='text' name='src' value='{$seed->image}'>
+                        <button type='submit' class='btn btnBackground'>Add to Cart</button>
+                      </form>                    
+                    </td>
                   </tr>";
         }
 
@@ -156,6 +170,41 @@
         echo "</div>";
         ?>
     </div>
+    <script>
+    function addToCartDone() {
+      alert("Item Added Successfully");
+    }
+  </script>
+  
+  <?php 
+  include("Connect.php");
+
+
+  if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+      $id = $_POST["id"];
+      $name = $_POST["name"];
+      $type = $_POST["type"];
+      $price = $_POST["price"];
+      $src = $_POST["src"];
+      
+      $sql= "INSERT INTO greenland.cart (item_id, item, type, price, count , src) VALUES ($id, '$name', '$type', $price, 1 , '$src');";
+      // $result = mysqli_query($conn, $sql); //4-execute query
+      
+      if ($conn->query($sql) === TRUE) {
+          echo "New record created successfully";
+        } 
+        else {
+          echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+      mysqli_close($conn); //5- close DB connection
+      echo"<script>addToCartDone();</script>";
+  }
+  else {
+      echo'error Try again!';
+
+    }
+?>
 
 <!--This is the footer-->
 <footer class="backgroundings foot">
