@@ -119,9 +119,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="funpage.html">Fun</a>
         </li>
-  
+
       </ul>
     </nav>
+    
 
     <?php
     //Check if the variable is declared or not if it is then display it
@@ -129,6 +130,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $pay->display(); 
     }
     ?>
+
+    
+    <!-- form done.html -->
+    <div class="container-fluid text-center p-1" style="background-color: rgba(42,74,70,1);">
+        <h1 style="color: white;">We Are Done!</h1>
+    </div>
+
+
+    <div class="container m-4">
+        <img src="statics/agri.jpg" width="50%"  class="mx-auto d-block" style="border-radius: 20px; ">
+    </div>
+
+
+    <div class="container m-3 text-center " style="height: 100px;">
+        <h3> Thank You For Shoping</h3>
+        <h5> One Of Our Team Will Contact With You Soon...</h5>
+    </div>
+    
+
     <!--This is the footer-->
 <footer class="backgroundings foot">
 [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
