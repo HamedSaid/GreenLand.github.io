@@ -59,6 +59,10 @@
 </head>
 <body>
 
+    <?php
+    $total = $_GET["tot"];
+    ?>
+
      <!-- this is the header-->
      <!-- this is the header-->
      <nav class="navbar navbar-expand-sm  navbar-dark backgroundings">
@@ -108,7 +112,7 @@
 
             <div class="form-group">
                 <label for="item-price">Total Price (RO):</label>
-                <h6><span id="display_total_price">0</span> R.O</h6>
+                <h6><span><?php echo "$total" ?></span> R.O</h6>
             </div>
         </div>
     </div>
@@ -156,7 +160,8 @@
           <label>Zip</label>
           <input type="text" name="zip" class="form-control">
       </div>
-      <input type="hidden" id="totalPriceInput" name="totalPrice">
+
+      <input type="hidden" name="totalPrice" value='<?php echo "$total"; ?>'>
 
       
       <div class="col-12">

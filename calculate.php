@@ -267,8 +267,8 @@
     <div class="row mt-3 p-3" style=" background-color: rgba(42,74,70,1); color: rgba(196,210,202,1);">
         <h3 class="col-8">Total price: <span id="total"> <?php echo "$Price_Total"; ?> </span> R.O</h3>
         
-        <form action="pay.html" method="get" class="col-4">
-            <input hidden name="tot" value="<?php echo "'$Price_total'"; ?>">
+        <form action="pay.php" method="get" class="col-4">
+            <input hidden name="tot" value='<?php echo "$Price_Total"; ?>'>
             <button type="submit" class="btn btn-outline-light" style="width: 80%;">
                 pay
             </button>
