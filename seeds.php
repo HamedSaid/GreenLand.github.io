@@ -89,7 +89,7 @@
             <h3 style="color: rgba(11, 100, 90, 1);">Search for specific seed:</h3>
             <form method="GET" class="d-flex justify-content-center align-items-center">
             <input type="text" name="search" placeholder="Enter seed name" class="form-control searchInput" style="width: 400px; padding: 10px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc; margin: 0 auto;">
-                <button type="submit" class="btn btnBackground">Search</button>
+                <button type="submit" class="btn btnBackground m-2">Search</button>
             </form>
         </div>
        
@@ -191,18 +191,19 @@
 
 
       // check if the item is order in the cart 
-      $sql= "select greenland.cart WHERE item_id = $id;";
+      $sql= "select * FROM greenland.cart WHERE item_id = $id;";
       $result = mysqli_query($conn, $sql); //4-execute query
       
-      if (mysqli_num_rows($result) != 0) {
+
+      if (mysqli_num_rows($result) > 0) {
           echo "
           <script>
             alert('ITEM is ALREADY EXISTS IN The CART!');
           </script>
           ";
-          header( "Location: " . $_SERVER["PHP_SELF"]);
           exit();
       }
+
 
       $sql= "INSERT INTO greenland.cart (item_id, item, type, price, count , src) VALUES ($id, '$name', '$type', $price, 1 , '$src');";
       // $result = mysqli_query($conn, $sql); //4-execute query
@@ -217,10 +218,6 @@
       mysqli_close($conn); //5- close DB connection
       echo"<script>addToCartDone();</script>";
   }
-  else {
-      echo'error Try again!';
-
-    }
 ?>
 
 
