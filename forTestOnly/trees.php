@@ -10,7 +10,7 @@ include("Connect.php");
 $type = "tree";
 
 // SQL query to fetch data
-$sql = "SELECT * FROM if0_37953349_greenland.trees WHERE Type='$type'";
+$sql = "SELECT * FROM trees WHERE Type='$type'";
 $result = mysqli_query($conn, $sql);
 
 // Check for errors in the query

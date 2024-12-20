@@ -1,10 +1,9 @@
 <?php
-$servername = "sql111.infinityfree.com";
-$username = "if0_37953349";
-$password = "cf9pBu1A0uxi7";
-$dbname = "if0_37953349_greenland";
+$servername = "localhost";
+$username = "root";
+$password = "";
 // Create connection
-$conn = new mysqli($servername, $username, $password,$dbname);
+$conn = new mysqli($servername, $username, $password);
 
 // Check connection
 if ($conn->connect_error) {

@@ -7,7 +7,7 @@
             $count = $count + 1;
             
             
-            $sql= "UPDATE if0_37953349_greenland.cart set count=$count WHERE id=$id;";
+            $sql= "UPDATE cart set count=$count WHERE id=$id;";
             // $result = mysqli_query($conn, $sql); //4-execute query
             
             if ($conn->query($sql) === TRUE) {
@@ -42,7 +42,7 @@
             
             
 
-            $sql= "UPDATE if0_37953349_greenland.cart set count=$count WHERE id=$id;";
+            $sql= "UPDATE cart set count=$count WHERE id=$id;";
             // $result = mysqli_query($conn, $sql); //4-execute query
             
             if ($conn->query($sql) === TRUE) {
@@ -210,7 +210,7 @@
     
     // create items
     $Price_Total = 0;
-    $sql= "select * from if0_37953349_greenland.cart;";
+    $sql= "select * from cart;";
     $result = mysqli_query($conn, $sql); //4-execute query
     mysqli_close($conn); //5- close DB connection
 

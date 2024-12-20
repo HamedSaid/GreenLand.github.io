@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     $src = $_POST["src"];
     
 
-    $sql= "INSERT INTO greenland.cart (item_id, item, type, price, count , src) VALUES ($id, '$name', '$type', $price, 1 , '$src');";
+    $sql= "INSERT INTO cart (item_id, item, type, price, count , src) VALUES ($id, '$name', '$type', $price, 1 , '$src');";
     // $result = mysqli_query($conn, $sql); //4-execute query
     
     if ($conn->query($sql) === TRUE) {
