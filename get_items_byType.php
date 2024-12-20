@@ -2,7 +2,7 @@
 // for connection with sql database
 include("Connect.php");
 
-$sql= "select * from greenland.trees where Type='$type';";
+$sql= "select * from if0_37953349_greenland.trees where Type='$type';";
 $result = mysqli_query($conn, $sql); //4-execute query
 mysqli_close($conn); //5- close DB connection
 
