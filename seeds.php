@@ -191,7 +191,7 @@
 
 
       // check if the item is order in the cart 
-      $sql= "select * FROM greenland.cart WHERE item_id = $id;";
+      $sql= "select * FROM if0_37953349_greenland.cart WHERE item_id = $id;";
       $result = mysqli_query($conn, $sql); //4-execute query
       
 
@@ -205,7 +205,7 @@
       }
 
 
-      $sql= "INSERT INTO greenland.cart (item_id, item, type, price, count , src) VALUES ($id, '$name', '$type', $price, 1 , '$src');";
+      $sql= "INSERT INTO if0_37953349_greenland.cart (item_id, item, type, price, count , src) VALUES ($id, '$name', '$type', $price, 1 , '$src');";
       // $result = mysqli_query($conn, $sql); //4-execute query
       
       if ($conn->query($sql) === TRUE) {
