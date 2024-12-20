@@ -27,7 +27,7 @@ class Contact{
 
     // a function to display the stored data in a table
     public function display() {
-        echo "<h2 class='text-center backgroundings' id='title'>Submitted Contact Information</h2>";
+        echo "<h2 class='text-center backgroundings' id='title'>Submitted Contact Information Done Successfully</h2>";
         echo "<table class='table table-bordered table-striped'>";
         echo "<thead class='table-dark'>";
         echo "<tr><th>Name</th><th>Email</th><th>Phone Number</th><th>Message</th></tr>";
@@ -92,12 +92,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       </ul>
     </nav>
 
+
+    
+
     <?php
     //Check if the variable is declared or not if it is then display it
     if (isset($contact)) {
         $contact->display(); 
     }
     ?>
+
+
     <!--This is the footer-->
 <footer class="backgroundings foot">
 [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
