@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FunPage</title>
+
+    <!-- this for bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- for the style sheet-->
+      <link rel="stylesheet" href="style.css">
+
+      <!-- this for download other fonts-->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+        
+        
+        
+        .imgs {
+            width: 250px;
+            height: 150px;
+            border: 10px  ;
+            border-style: none;
+            border-radius: 20px;
+            border-color: black;
+            margin: 10px;
+        }
+
+        .Coverimgs {
+            width: 300px;
+            height: 200px;
+            border: 10px;
+            border-style: none;
+            border-radius: 20px;
+            border-color: black;
+            margin: 10px;
+        }
+
+        .background {
+            background-image: linear-gradient(to  right, #4A2A2E, #2a4a46);
+            text-align: center;  
+            width: 100%; 
+            height: 100vw;
+            color: white
+        }
+
+     
+    </style>
+</head>
+
+<body>
+    <!-- this is the header-->
+     <!-- this is the header-->
+     <nav class="navbar navbar-expand-sm  navbar-dark backgroundings">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="index.html"><img src="statics/logo.jpg" width="30px" class="rounded-circle"></a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class= "dropdown-toggle nav-link" data-bs-toggle="dropdown">
+            Shop 
+          </a> 
+          <ul class="dropdown-menu m-3 mt-0">
+            <li><a class="dropdown-item" href="shop.html">Main Shop</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="flowers.php">Flowers</a></li>
+            <li><a class="dropdown-item" href="seeds.php">Seeds</a></li>
+            <li><a class="dropdown-item" href="trees.php">Trees</a></li>
+          </ul>  
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="calculate.php">Cart</a>
+        </li>
+          
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="contactUs.html">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"data-toggle="tab" href="AboutUs.html">About Us</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="Questionnaire_page.html">Questionnaire</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="funpage.html">Fun</a>
+        </li>
+  
+      </ul>
+    </nav>
+
+
+    <div class="background container-fluid p-5" id="coverPage">
+        
+        <h3>
+            Guess the correct tree and get a discount!   
+        </h3>
+        <h5>
+            Get 7 questions correct to get a discount.
+        </h5>
+
+        <div class="container" >
+            <img src="statics/plam.jpg" class="Coverimgs" id="coverImg1">
+            <img src="statics/plam.jpg" class="Coverimgs" id="coverImg2">
+            <img src="statics/plam.jpg" class="Coverimgs" id="coverImg3">
+        </div>
+        
+
+
+        <button  class="btn btn-light m-2" id="play" style="width: 100px; height: 40px;" onclick="startPlay()">
+            Play now 
+        </button>
+    </div> 
+    
+    
+    <!-- ----------------------------------------------------------------------------------------------------------- -->
+    <!-- this only for play page -->
+    
+    <div class="background container-fluid" id="playPage" style="display: none;">
+        <h4 id="score" style="text-align: left;"></h4>
+        <h4 id="time" style="text-align: left;"></h4>
+
+        <h2 id="qesi"></h2>
+
+       
+        <div class="container p-5">
+            <a  href="#" id="0"  onclick="checkAnswer(this.id)"><img src="statics/plam.jpg" class="imgs" id="img1"></a>
+            <a  href="#" id="1"  onclick="checkAnswer(this.id)"><img src="statics/plam.jpg" class="imgs" id="img2"></a>
+            <a  href="#" id="2"  onclick="checkAnswer(this.id)"><img src="statics/plam.jpg" class="imgs" id="img3"></a>
+            <a  href="#" id="3"  onclick="checkAnswer(this.id)"><img src="statics/plam.jpg" class="imgs" id="img4"></a>
+            <a  href="#" id="4"  onclick="checkAnswer(this.id)"><img src="statics/plam.jpg" class="imgs" id="img5"></a>
+            <a  href="#" id="5"  onclick="checkAnswer(this.id)"><img src="statics/plam.jpg" class="imgs" id="img6"></a>
+            <a  href="#" id="6"  onclick="checkAnswer(this.id)"><img src="statics/plam.jpg" class="imgs" id="img7"></a>
+            <a  href="#" id="7"  onclick="checkAnswer(this.id)"><img src="statics/plam.jpg" class="imgs" id="img8"></a>
+            <a  href="#" id="8"  onclick="checkAnswer(this.id)"><img src="statics/plam.jpg" class="imgs" id="img9"></a>
+        </div>
+    </div>
+
+
+    <!-- ----------------------------------------------------------------------------------------------------------- -->
+    <!-- this only for GameOver Page -->
+    <div class="background container-fluid p-5" id="gameOverPage" style="height: 43vw; display: none;">
+        <h2>GameOver Try Again!</h2>
+        <h4 id="score2" style="text-align: center;"></h4>
+                
+        <div id="congratulations" class="container" style="display: none;">
+            <h2>congratulations! you get a discount:</h2>
+            <h4 id="discount" style="text-align: center;"></h4>
+        </div>
+
+    
+    </div>
+   
+    <footer class="backgroundings foot">
+        [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
+    </footer>
+</body>
+
+<script src="funpage.js">
+</script>
+
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Questionnaire</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- this for bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Javascript -->
+    <script defer src="./Questionnaire.script.js"></script>
+
+    <style>
+        .foot_question {
+            background-color: rgb(42, 74, 70);
+            color: white;
+            text-align: center;
+            margin-top: 100px;
+            margin-right: 100px;
+            margin-bottom: auto;
+            padding: 20px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body  id="backgrouding_form">
+
+     <!-- this is the header-->
+     <!-- this is the header-->
+     <nav class="navbar navbar-expand-sm  navbar-dark backgroundings">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="index.html"><img src="statics/logo.jpg" width="30px" class="rounded-circle"></a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class= "dropdown-toggle nav-link" data-bs-toggle="dropdown">
+            Shop 
+          </a> 
+          <ul class="dropdown-menu m-3 mt-0">
+            <li><a class="dropdown-item" href="shop.html">Main Shop</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="flowers.php">Flowers</a></li>
+            <li><a class="dropdown-item" href="seeds.php">Seeds</a></li>
+            <li><a class="dropdown-item" href="trees.php">Trees</a></li>
+          </ul>  
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="Calculate.html">Cart</a>
+        </li>
+          
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="contactUs.html">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"data-toggle="tab" href="AboutUs.html">About Us</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="Questionnaire_page.html">Questionnaire</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="funpage.html">Fun</a>
+        </li>
+  
+      </ul>
+    </nav>
+
+
+    <div class="container" style="padding-bottom: 85px;">
+        <h1 id="title_1" style="margin-top: 25px;">Fill the form if you have Questions</h1>
+        <form id="form" action="questionnaire.php" method="POST">
+            <!-- title for form -->
+            <h1>Registration</h1>
+
+            <!-- Username -->
+            <!-- Username -->
+            <div class="input_user">
+               <label for="user_name">Username</label>
+               <input id="user_name" name="user_name" type="text" required>
+                <div class="error"></div> <!-- This will show the error message -->
+            </div>
+
+
+            <!-- email -->
+            <div class="input_user">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required>
+                <div class="error"></div>
+            </div>
+
+            <!-- password -->
+            <div class="input_user">
+                <label for="password">Password</label>
+                <input id="password"name="password" type="password" required>
+                <div class="error"></div>
+            </div>
+
+            <!-- phone number -->
+            <div class="input_user">
+                <label for="Phone_Number">Phone Number</label>
+                <input type="number" name="Phone_Number" id="Phone_Number" required>
+                <div class="error"></div>
+            </div>
+
+            <!-- text_area suggestions not required (optional) -->
+            <div class="input_user">
+                <label style="margin-top: 10px;" for="text_area">Do you have any suggestions? (Optional)</label>
+                <br>
+                <textarea name="suggestions" id="text_area" maxlength="100" placeholder="write your options" rows="8" cols="35"></textarea>
+            </div>
+
+            <!-- radio -->
+            <div class="input_user">
+                <span>Gender </span>
+                <div>
+                    <input class="readio_choices" type="radio" name="choices" id="choice_one" value="Male">
+                    <label for="choice_one">Male</label>
+
+                    <input style="margin-left: 20px;" class="readio_choices"  type="radio" name="choices" id="choice_two" value="Female">
+                    <label for="choice_two">Female</label>
+                </div>
+                <div class="error"></div>
+            </div>
+
+            <!-- checkbox -->
+            <div class="input_user" id="checking">
+                <label style="margin-top: 10px;" for="checkbox">Choose your favorite kinds of trees</label>
+                <div>
+                    <input class="check_box" type="checkbox" value="fruit trees" name="trees[]" id="checkbox">
+                    <label for="check_one">Fruit trees</label>
+
+                    <input class="check_box" type="checkbox" value="garden trees" name="trees[]" id="checkbox">
+                    <label for="check_two">Garden trees</label>
+
+                    <input class="check_box" type="checkbox" value="flowers" name="trees[]"  id="checkbox">
+                    <label for="check_three">Flowers</label>
+
+                    <input class="check_box" type="checkbox" value="palms" name="trees[]" id="checkbox">
+                    <label for="check_four">Palms</label>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <button type="reset" class="btn btn-secondary">Clear Form</button>    
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <footer class="foot_question">
+        [123 Main Street, apt 4B SAMAIL] [99231455] [greenlands@gmail.com]
+    </footer>
+</body>
+</html>

@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home Page</title>
+  
+  <!-- this for bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- for the style sheet-->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- this for download other fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    
+  <style>
+    
+    /* this for main img in front */
+    #DivImg {
+      background-image: url('statics/inhomePageEdit.jpg'); 
+      height: 600px; 
+      background-size: cover; 
+      background-position: center;
+    }
+    
+    /* green card */
+    #title {
+      background-color: rgba(60, 107, 101, 0.8);
+      color: white;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      font-size: large;
+      height: 300px;
+      margin: 10% 0% 0% 10% ;
+      border-radius: 20px; 
+    }
+
+
+
+    /* I will do that by JS */
+    /* 
+    #title:hover {
+      background-color: rgb(42, 74, 70);
+      transform-style: preserve-3d;
+      transition-duration: 1000ms;
+      transform: translateY(-10px);
+
+    } 
+      */
+
+    /* font from google */
+    .comic-neue-bold {
+      font-family: "Comic Neue", cursive;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+
+  </style>
+
+ 
+
+</head>
+<body>
+
+      <!-- this is the header-->
+     <!-- this is the header-->
+     <nav class="navbar navbar-expand-sm  navbar-dark backgroundings">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="index.html"><img src="statics/logo.jpg" width="30px" class="rounded-circle"></a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class= "dropdown-toggle nav-link" data-bs-toggle="dropdown">
+            Shop 
+          </a> 
+          <ul class="dropdown-menu m-3 mt-0">
+            <li><a class="dropdown-item" href="shop.html">Main Shop</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="flowers.php">Flowers</a></li>
+            <li><a class="dropdown-item" href="seeds.php">Seeds</a></li>
+            <li><a class="dropdown-item" href="trees.php">Trees</a></li>
+          </ul>  
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="calculate.php">Cart</a>
+        </li>
+          
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="contactUs.html">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"data-toggle="tab" href="AboutUs.html">About Us</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="Questionnaire_page.html">Questionnaire</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="funpage.html">Fun</a>
+        </li>
+  
+      </ul>
+    </nav>
+
+
+    <!-- this is for the uper page with the green card (title)-->
+    <!-- the doctor allow my to do it in the top. this for Q5.A -->
+  <div class="container-fluid" id="DivImg">
+    
+    <div class="container float-start text-center col-5" id="title">
+      <h3 style="margin-top: 80px;">GreenLands</h3> 
+      <h4 style="color: rgb(167, 163, 163); font-size: medium;">For Every Land We Have A Premium Tree </h4>
+      <a href="shop.html">
+        <button type="button" class="btn btn-outline-light m-3">Start Shoping</button>
+      </a>
+
+      <!-- day and date -->
+      <h6 class="mp-1 mt-4" id="day" style="color: rgb(167, 163, 163); font-size: small;"></h6>
+   
+    </div>
+
+  </div>
+
+  <!--for the quote-->
+  <div class="container-fluid p-5" style=" background-color: rgba(225,223,219,1);">
+    <img id="img" class="container-fluid mx-auto d-block " src="statics/plam.jpg" style=" width: 700px; height: 450px; border: 10px; border-color: black;  border-radius: 20px;">
+    <blockquote class="comic-neue-bold" style="font-size: medium; text-align: center;">
+      If agriculture goes wrong, nothing else will have a chance to go right (M. S. Swaminathan)
+    </blockquote>
+  </div>
+
+
+  <!-- style in style.css-->
+  <div class="container-fluid text-center mt-3 p-3" style="background-color: rgb(42, 74, 70); color:white;">
+    <h3 >Searching About High-qulity Trees And Seeds ? <br/> Check Our Shop!</h3>
+  </div>
+  
+  <div class="mt-3 pt-5 ">
+    <h3 style="text-align: center; color: rgb(61, 93, 89); margin-bottom: 50px;">Categories</h3>
+
+    <div class="row m-4">  
+      <span class="typesElement m-2 p-4 pb-5 col-sm">
+        <a href="flowers.php">
+          <img src="statics/flower edited.png" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+          <h5>Flowers</h5>
+        </a>
+      </span>
+
+      <span class="typesElement m-2 p-4 pb-5 col-sm">
+        <a href="trees.php">
+          <img src="statics/trees.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+          <h5>Seeding And Trees</h5>  
+        </a>
+      </span>
+      
+      <span class="typesElement m-2 p-4 pb-5 col-sm">
+        <a href="seeds.php">
+          <img src="statics/seeding.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+          <h5>Seeds</h5>
+        </a>
+      </span>
+
+    </div>
+  </div>
+
+
+  <!-- divider -->
+  <div class="container-fluid text-center  p-3" style="background-color: rgb(42, 74, 70); color:white; margin-top: 200px;">
+    <h3 >What's new<br/> take a trip in out new features!</h3>
+  </div>
+
+  <!-- this for going to the new pages -->
+  <div class="pt-5" style="margin-bottom: 50px;">
+    <h3 style="text-align: center; color: rgb(61, 93, 89);">Powerful Futures! Right?</h3>
+
+    <div class="row m-4">  
+      <span class="newFutersElement m-2 p-4 pb-5 col-sm">
+        <a href="Questionnaire_page.html">
+          <img src="statics/Quesinons.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+          <h5>Questionnaire</h5>
+        </a>
+      </span>
+
+      <span class="newFutersElement m-2 p-4 pb-5 col-sm">
+        <a href="funpage.html">
+          <img src="statics/game.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+          <h5>Fun Page</h5>  
+        </a>
+      </span>
+      
+      <span class="newFutersElement m-2 p-4 pb-5 col-sm">
+        <a href="calculate.php">
+          <img src="statics/math.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+          <h5>Calculate Page</h5>
+        </a>
+      </span>
+
+    </div>
+  </div>
+
+
+  <footer class="backgroundings foot">
+    [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
+    </footer>
+</body>
+
+
+<script src="jsFile.js"></script>
+
+</html>
