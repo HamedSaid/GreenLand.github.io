@@ -108,13 +108,14 @@ mysqli_close($conn);
   
       </ul>
     </nav>
-    <h1 class="text-center">Trees</h1>
+    <h1 class="text-center backgroundings" id="title">Trees</h1>
     <div class="container mt-5">
+        <!-- Search Form -->
         <div class="search">
-            <h3>Search for specific tree:</h3>
-            <form method="GET" class="d-flex">
-                <input type="text" name="search" placeholder="Enter tree name" class="form-control" style="margin-right: 10px;">
-                <button type="submit" class="btn btn-success">Search</button>
+            <h3 style="color: rgba(11, 100, 90, 1);">Search for specific tree:</h3>
+            <form method="GET" class="d-flex justify-content-center align-items-center">
+            <input type="text" name="search" placeholder="Enter tree name" class="form-control searchInput" style="width: 400px; padding: 10px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc; margin: 0 auto;">
+                <button type="submit" class="btn btnBackground m-2">Search</button>
             </form>
         </div>
         <?php
@@ -166,8 +167,54 @@ mysqli_close($conn);
         echo "</div>";
         ?>
     </div>
-    <footer>
-        <p>Contact: greenlands@gmail.com</p>
-    </footer>
+  <script>
+    function addToCartDone() {
+      alert("Item Added Successfully");
+    }
+  </script>
+
+  <?php 
+  include("Connect.php");
+
+
+  if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+      $id = $_POST["id"];
+      $name = $_POST["name"];
+      $type = $_POST["type"];
+      $price = $_POST["price"];
+      $src = $_POST["src"];
+
+
+      // check if the item is order in the cart 
+      $sql= "select * FROM if0_37953349_greenland.cart WHERE item_id = $id;";
+      $result = mysqli_query($conn, $sql); //4-execute query
+
+      if (mysqli_num_rows($result) > 0) {
+          echo "
+          <script>
+            alert('ITEM is ALREADY EXISTS IN The CART!');
+          </script>
+          ";
+          exit();
+      }
+
+      $sql= "INSERT INTO if0_37953349_greenland.cart (item_id, item, type, price, count , src) VALUES ($id, '$name', '$type', $price, 1 , '$src');";
+      // $result = mysqli_query($conn, $sql); //4-execute query
+
+      if ($conn->query($sql) === TRUE) {
+          echo "New record created successfully";
+        } 
+        else {
+          echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+      mysqli_close($conn); //5- close DB connection
+      echo"<script>addToCartDone();</script>";
+  }
+?>
+<!--This is the footer-->
+<footer class="backgroundings foot">
+[123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
+</footer>
 </body>
 </html>
