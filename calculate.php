@@ -41,7 +41,6 @@
             $count = $count - 1;
             
             
-
             $sql= "UPDATE if0_37953349_greenland.cart set count=$count WHERE id=$id;";
             // $result = mysqli_query($conn, $sql); //4-execute query
             
