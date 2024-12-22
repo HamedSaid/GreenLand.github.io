@@ -281,7 +281,6 @@
     </footer>
     
 
-    <script src="cart_buttons.js"></script>
 
 </body>
 </html>

@@ -177,7 +177,7 @@
       $src = $_POST["src"];
 
 
-      // check if the item is order in the cart 
+      // check if the item is order in the cart
       $sql= "select * FROM greenland.cart WHERE item_id = $id;";
       $result = mysqli_query($conn, $sql); //4-execute query
       
