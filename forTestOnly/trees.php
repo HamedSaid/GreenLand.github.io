@@ -1,39 +1,3 @@
-<?php
-// Enable error reporting for debugging
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-// Include database connection
-include("Connect.php");
-
-// Define the type variable to match the database
-$type = "tree";
-
-// SQL query to fetch data
-$sql = "SELECT * FROM trees WHERE Type='$type'";
-$result = mysqli_query($conn, $sql);
-
-// Check for errors in the query
-if (!$result) {
-    die("Query failed: " . mysqli_error($conn));
-}
-
-// Fetch data
-$treesData = [];
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $treesData[] = [
-            'id' => $row["ID"],
-            'treeName' => $row["Item"],
-            'price' => $row["Price (OMR)"],
-            'src' => $row["Src"]
-        ];
-    }
-}
-
-// Close the database connection
-mysqli_close($conn);
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,18 +81,49 @@ mysqli_close($conn);
                 <button type="submit" class="btn btn-success">Search</button>
             </form>
         </div>
+         <!--connect sql-->
+         <?php  
+          $type = "tree";
+          include("get_items_byType.php");
+        ?>
+
+        <!-- Table -->
         <?php
-        // Filter the data based on search query
-        $filteredTrees = $treesData;
+        // Creating class product
+        class Product {
+            public $id;
+            public $name;
+            public $price;
+            public $image;
+            //the constructor of class product
+            public function __construct($id, $name, $price, $image) {
+                $this->id = $id;                
+                $this->name = $name;
+                $this->price = $price;
+                $this->image = $image;
+            }
+        }
+
+        // Creating array of seeds
+        // get data from sql
+        $trees = array();
+        foreach($treesData as $data) {
+          array_push($trees, new Product($data['id'] ,$data['treeName'], $data['price'], $data['src']));
+        }
+
+
+        //function to search 
+        $filteredtrees = $trees;
         if (isset($_GET['search']) && !empty($_GET['search'])) {
             $searchQuery = strtolower($_GET['search']);
-            $filteredTrees = array_filter($treesData, function ($tree) use ($searchQuery) {
-                return strpos(strtolower($tree['treeName']), $searchQuery) !== false;
+            $filteredtrees = array_filter($trees, callback: function ($seed) use ($searchQuery) {
+                return strpos(strtolower($seed->name), $searchQuery) !== false;
             });
         }
 
-        echo "<div class='mt-4'>";
-        echo "<table class='table table-hover table-bordered'>";
+        //Displaying the table
+        echo "<div class='container mt-4'>";
+        echo "<table class='table table-hover table-bordered tableHover'>";
         echo "<thead class='table-dark'>";
         echo "<tr>
                 <th>Image</th>
@@ -139,35 +134,85 @@ mysqli_close($conn);
         echo "</thead>";
         echo "<tbody>";
 
-        if (count($filteredTrees) > 0) {
-            foreach ($filteredTrees as $tree) {
-                echo "<tr>
-                        <td><img src='{$tree['src']}' class='productImg'></td>
-                        <td>{$tree['treeName']}</td>
-                        <td>{$tree['price']}</td>
-                        <td>
-                            <form method='POST' action='" . htmlspecialchars($_SERVER['PHP_SELF']) . "'>
-                                <input type='hidden' name='id' value='{$tree['id']}'>
-                                <input type='hidden' name='name' value='{$tree['treeName']}'>
-                                <input type='hidden' name='type' value='tree'>
-                                <input type='hidden' name='price' value='{$tree['price']}'>
-                                <input type='hidden' name='src' value='{$tree['src']}'>
-                                <button type='submit' class='btn btnBackground'>Add to Cart</button>
-                            </form>
-                        </td>
-                      </tr>";
-            }
-        } else {
-            echo "<tr><td colspan='4' class='text-center'>No trees found.</td></tr>";
+        foreach ($filteredtrees as $seed) {
+          $Treetype = 'tree';  
+          echo "<tr>
+                    <td><img src='{$seed->image}' class='productImg' alt='{$seed->name}'></td>
+                    <td>{$seed->name}</td>
+                    <td>{$seed->price}</td>
+                    <td>
+                      <form method='POST' action='" .htmlspecialchars($_SERVER['PHP_SELF']) ."' class='d-flex justify-content-center align-items-center'>
+                        <input hidden type='text' name='id' value='{$seed->id}'>
+                        <input hidden type='text' name='name' value='{$seed->name}'>
+                        <input hidden type='text' name='type' value={$Treetype}>
+                        <input hidden type='text' name='price' value='{$seed->price}'>
+                        <input hidden type='text' name='src' value='{$seed->image}'>
+                        <button type='submit' class='btn btnBackground'>Add to Cart</button>
+                      </form>                    
+                    </td>
+                  </tr>";
         }
-
         echo "</tbody>";
         echo "</table>";
         echo "</div>";
         ?>
     </div>
-    <footer>
-        <p>Contact: greenlands@gmail.com</p>
-    </footer>
+
+
+  <script>
+    function addToCartDone() {
+      alert("Item Added Successfully");
+    }
+  </script>
+  
+  <?php 
+  include("Connect.php");
+
+
+  if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+      $id = $_POST["id"];
+      $name = $_POST["name"];
+      $type = $_POST["type"];
+      $price = $_POST["price"];
+      $src = $_POST["src"];
+
+
+      // check if the item is order in the cart 
+      $sql= "select * FROM greenland.cart WHERE item_id = $id;";
+      $result = mysqli_query($conn, $sql); //4-execute query
+      
+
+      if (mysqli_num_rows($result) > 0) {
+          echo "
+          <script>
+            alert('ITEM is ALREADY EXISTS IN The CART!');
+          </script>
+          ";
+          exit();
+      }
+
+
+      $sql= "INSERT INTO greenland.cart (item_id, item, type, price, count , src) VALUES ($id, '$name', '$type', $price, 1 , '$src');";
+      // $result = mysqli_query($conn, $sql); //4-execute query
+      
+      if ($conn->query($sql) === TRUE) {
+          echo "New record created successfully";
+        } 
+        else {
+          echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+      mysqli_close($conn); //5- close DB connection
+      echo"<script>addToCartDone();</script>";
+  }
+?>
+
+
+
+
+<!--This is the footer-->
+<footer class="backgroundings foot">
+[123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
+</footer>
 </body>
 </html>

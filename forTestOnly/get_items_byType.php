@@ -2,7 +2,7 @@
 // for connection with sql database
 include("Connect.php");
 
-$sql= "select * from trees where Type='$type';";
+$sql= "select * from greenland.trees where Type='$type';";
 $result = mysqli_query($conn, $sql); //4-execute query
 mysqli_close($conn); //5- close DB connection
 
@@ -14,6 +14,7 @@ if (mysqli_num_rows($result) > 0) {
     $i = 0;
     
     $treesData = array();
+    
     while($row = mysqli_fetch_assoc($result)) {
     $treesData[$i] = [
         'id' => $row["ID"],

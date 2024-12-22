@@ -210,7 +210,7 @@
     
     // create items
     $Price_Total = 0;
-    $sql= "select * from cart;";
+    $sql= "select * from greenland.cart;";
     $result = mysqli_query($conn, $sql); //4-execute query
     mysqli_close($conn); //5- close DB connection
 
