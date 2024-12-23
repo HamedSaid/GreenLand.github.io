@@ -1,39 +1,3 @@
-<?php
-// Enable error reporting for debugging
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-// Include database connection
-include("Connect.php");
-
-// Define the type variable to match the database
-$type = "tree";
-
-// SQL query to fetch data
-$sql = "SELECT * FROM if0_37953349_greenland.trees WHERE Type='$type'";
-$result = mysqli_query($conn, $sql);
-
-// Check for errors in the query
-if (!$result) {
-    die("Query failed: " . mysqli_error($conn));
-}
-
-// Fetch data
-$treesData = [];
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $treesData[] = [
-            'id' => $row["ID"],
-            'treeName' => $row["Item"],
-            'price' => $row["Price (OMR)"],
-            'src' => $row["Src"]
-        ];
-    }
-}
-
-// Close the database connection
-mysqli_close($conn);
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,9 +7,10 @@ mysqli_close($conn);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    
     <style>
 
-    /* Style for table images */ 
+   /* Style for table images */ 
 
   .productImg {
     width: 250px;
@@ -62,9 +27,6 @@ mysqli_close($conn);
   .tableHover tbody tr:hover {
     background-color: rgba(0, 128, 0, 0.2);
 }
-
-
-
 </style>
 </head>
 <body>
@@ -118,13 +80,45 @@ mysqli_close($conn);
                 <button type="submit" class="btn btnBackground m-2">Search</button>
             </form>
         </div>
+        
+        <!--connect sql-->
+        <?php  
+          $type = "tree";
+          include("get_items_byType.php");
+        ?>
+       
+
+        <!-- Table -->
         <?php
-        // Filter the data based on search query
-        $filteredTrees = $treesData;
+        // Creating class product
+        class Product {
+          public $id;
+          public $name;
+          public $price;
+          public $image;
+          //the constructor of class product
+          public function __construct($id, $name, $price, $image) {
+              $this->id = $id;                
+              $this->name = $name;
+              $this->price = $price;
+              $this->image = $image;
+          }
+      }
+
+         // Creating array of seeds
+        // get data from sql
+        $seeds = array();
+        foreach($treesData as $data) {
+          array_push($seeds, new Product($data['id'] ,$data['treeName'], $data['price'], $data['src']));
+        }
+
+
+        //function to search 
+        $filteredSeeds = $seeds;
         if (isset($_GET['search']) && !empty($_GET['search'])) {
             $searchQuery = strtolower($_GET['search']);
-            $filteredTrees = array_filter($treesData, function ($tree) use ($searchQuery) {
-                return strpos(strtolower($tree['treeName']), $searchQuery) !== false;
+            $filteredSeeds = array_filter($seeds, callback: function ($seed) use ($searchQuery) {
+                return strpos(strtolower($seed->name), $searchQuery) !== false;
             });
         }
 
@@ -140,33 +134,34 @@ mysqli_close($conn);
         echo "</thead>";
         echo "<tbody>";
 
-        if (count($filteredTrees) > 0) {
-            foreach ($filteredTrees as $tree) {
-                echo "<tr>
-                        <td><img src='{$tree['src']}' class='productImg'></td>
-                        <td>{$tree['treeName']}</td>
-                        <td>{$tree['price']}</td>
-                        <td>
-                            <form method='POST' action='" . htmlspecialchars($_SERVER['PHP_SELF']) . "'>
-                                <input type='hidden' name='id' value='{$tree['id']}'>
-                                <input type='hidden' name='name' value='{$tree['treeName']}'>
-                                <input type='hidden' name='type' value='tree'>
-                                <input type='hidden' name='price' value='{$tree['price']}'>
-                                <input type='hidden' name='src' value='{$tree['src']}'>
-                                <button type='submit' class='btn btnBackground'>Add to Cart</button>
-                            </form>
-                        </td>
-                      </tr>";
-            }
-        } else {
-            echo "<tr><td colspan='4' class='text-center'>No trees found.</td></tr>";
-        }
+        
 
+        foreach ($filteredSeeds as $tree) {
+          $Treetype = 'tree';  
+          echo "<tr>
+                    <td><img src='{$tree->image}' class='productImg' alt='{$tree->name}'></td>
+                    <td>{$tree->name}</td>
+                    <td>{$tree->price}</td>
+                    <td>
+                      <form method='POST' action='" .htmlspecialchars($_SERVER['PHP_SELF']) ."' class='d-flex justify-content-center align-items-center'>
+                        <input hidden type='text' name='id' value='{$tree->id}'>
+                        <input hidden type='text' name='name' value='{$tree->name}'>
+                        <input hidden type='text' name='type' value={$Treetype}>
+                        <input hidden type='text' name='price' value='{$tree->price}'>
+                        <input hidden type='text' name='src' value='{$tree->image}'>
+                        <button type='submit' class='btn btnBackground'>Add to Cart</button>
+                      </form>                    
+                    </td>
+                  </tr>";
+        }
         echo "</tbody>";
         echo "</table>";
         echo "</div>";
         ?>
+
     </div>
+
+
   <script>
     function addToCartDone() {
       alert("Item Added Successfully");

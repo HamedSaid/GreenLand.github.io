@@ -17,7 +17,7 @@
     
 <style>
 
-    /* Style for table images */ 
+   /* Style for table images */ 
 
   .productImg {
     width: 250px;
@@ -220,13 +220,9 @@
   }
 ?>
 
-
-
-
 <!--This is the footer-->
 <footer class="backgroundings foot">
 [123 Main Street, apt 4B SAMAIL ]   [99231455]   [greenlands@gmail.com]
 </footer>
 </body>
 </html>
-
