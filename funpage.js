@@ -71,7 +71,7 @@ function playGame() {
     qesiElement.innerHTML =  "find the image of '" + quesion + "'";
     
 
-    // change images randomly
+    // change images
     changeImages()
 
     function timegoOut() {
