@@ -87,8 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (phoneNumberValue === '') {
             setError(phoneNumber, 'Phone number is required');
             isValid = false;
-        } else if (phoneNumberValue.length < 9) {
-            setError(phoneNumber, 'Phone number must be at least 9 digits');
+        } else if (phoneNumberValue.length < 8) {
+            setError(phoneNumber, 'Phone number must be at least 8 digits');
             isValid = false;
         } else {
             setSuccess(phoneNumber);
