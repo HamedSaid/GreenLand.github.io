@@ -54,12 +54,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Validation for email
-        if (emailValue === '') {
+      // Function to validate the email format (if needed)
+        function isValidEmail(email) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+
+        // Validation logic for email input
+        if (emailValue.trim() === '') {
             setError(email, 'Email is required');
+            isValid = false;
+        } else if (!isValidEmail(emailValue)) {
+            setError(email, 'Invalid email format');
             isValid = false;
         } else {
             setSuccess(email);
         }
+
 
         // Validation for password
         if (passwordValue === '') {
